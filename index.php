@@ -5,8 +5,9 @@
 
   require "shared/sidebar_begin.php";
 ?>
-
-<h1>Patients</h1>
+<br />
+<h2 class="float-left">Patients</h2>
+<a href="patient.php?PATIENT_ID=-1" class="btn btn-sm btn-info float-right">Add a Patient</a>
 
 <table class="table">
   <thead class="thead-dark">
@@ -14,7 +15,7 @@
       <th scope="col">#</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col" class="w-10">&nbsp</th>
     </tr>
   </thead>
   <tbody id="tableBody">
@@ -28,8 +29,6 @@
 
   $jsToAddAfter[] = '<script>
 
-
-
                   //doAjaxCall({}, addPatientsToUI);
                   ajaxDone([{"NAME": "MARK", "LASTNAME": "JOHN", "ID": 1}], {callback: "addPatientsToUI", parentEl: "#tableBody"});
 
@@ -38,11 +37,11 @@
                         <th scope="row">${data.ID}</th>
                         <td>${data.NAME}</td>
                         <td>${data.LASTNAME}</td>
-                        <td>@${data.NAME}</td>
+                        <td ><a href="patient.php" class="btn btn-sm btn-info">Edit</a></td>
                       </tr>`);
                   }
 
                 </script>';
 
-  require "shared/footer.php";
+  require 'shared/footer.php';
 ?>

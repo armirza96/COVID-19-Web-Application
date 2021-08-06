@@ -6,17 +6,17 @@
          <!-- <?php // echo $sidebarHTML; ?>  -->
     <ul class="list-unstyled components" role="tablist">
       <li class="height_100 w-100">
-        <a href="tutors.php" class="height_100 padding_0" aria-selected="true">Patients</a>
+        <a href="index.php" class="height_100 padding_0" aria-selected="true">Patients</a>
       </li>
       <li class="height_100 w-100">
-        <a href="videos.php" class="height_100 padding_0" aria-selected="true">Healthcare</a>
+        <a href="healthcareWorker.php" class="height_100 padding_0" aria-selected="true">Healthcare</a>
       </li>
       <li class="height_100 w-100">
-        <a href="messages.php" class="height_100 padding_0" aria-selected="true">Province</a>
+        <a href="province.php" class="height_100 padding_0" aria-selected="true">Province</a>
       </li>
 
       <li class="height_100 w-100">
-        <a href="profile.php" class="height_100 padding_0" aria-selected="true">Age group</a>
+        <a href="ageGroup.php" class="height_100 padding_0" aria-selected="true">Age group</a>
       </li>
     </ul>
     <hr />
