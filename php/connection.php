@@ -1,7 +1,7 @@
 <?php
 $servername = 'nkc353.encs.concordia.ca';
 $username = 'a_rz';
-$password = 'Amb1dextr0u$';
+$password = '$';
 $dbServerHost = "login.encs.concordia.ca";
 $dbName = "nkc353_1";
 // Create connection
