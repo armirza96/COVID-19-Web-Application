@@ -37,7 +37,7 @@
                         <th scope="row">${data.ID}</th>
                         <td>${data.FIRST_NAME}</td>
                         <td>${data.LAST_NAME}</td>
-                        <td ><a href="patient.php" class="btn btn-sm btn-info">Edit</a></td>
+                        <td ><a href="patient.php?PATIENT_ID=${data.ID}" class="btn btn-sm btn-info">Edit</a></td>
                       </tr>`);
                   }
 

@@ -5,18 +5,47 @@ require "shared/navbar2.php";
 
 require "shared/sidebar_begin.php";
 
+require 'php/connection.php';
 
 //get patient info
 $patientID = $_GET["PATIENT_ID"] ?? -1;
 
+$sql = "SELECT
+          ID,
+          AgeGroupID,
+          firstName FIRST_NAME,
+          lastName LAST_NAME,
+          dateOfBirth,
+          telephone,
+          address,
+          city,
+          postal_code,
+          provinceID,
+          email,
+          medicareNumber
+        FROM
+          Patient
+        WHERE ID = ?";
+
+$stmt = $conn->prepare($sql);
+//
+$stmt->bind_param("i", $patientID);
+
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+$patient = $result->fetch_assoc();
+
+$conn->close();
 ?>
 <br />
 <div style="display: flex; justify-content: space-between;">
-  <?php if($patientID > 0) : ?>
+  <?php if($patient) : ?>
     <h2 >
-    Edit Patient
+    Edit Patient : <?="{$patient['FIRST_NAME']} {$patient['LAST_NAME']}";?>
     </h2>
-    <a href="patient.php?PATIENT_ID=-1" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Patient</a>
+    <a href="patient.php?PATIENT_ID=<?=$patientID?>" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Patient</a>
   <?php else : ?>
     <h2 >
     Add Patient
