@@ -1,1 +1,15 @@
-SELECT * FROM Patient
+SELECT
+  ID,
+  AgeGroupID,
+  firstName FIRST_NAME,
+  lastName LAST_NAME,
+  dateOfBirth,
+  telephone,
+  address,
+  city,
+  postal_code,
+  provinceID,
+  email,
+  medicareNumber
+FROM
+Patient

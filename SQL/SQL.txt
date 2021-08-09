@@ -1,0 +1,163 @@
+CREATE TABLE AgeGroup (
+ID INT AUTO_INCREMENT PRIMARY KEY,
+lowerAgeBound INT NOT NULL,
+upperAgeBound INT
+);
+
+CREATE TABLE Province(
+ID INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+code VARCHAR(2) NOT NULL
+);
+
+CREATE TABLE Patient(
+ID INT AUTO_INCREMENT PRIMARY KEY,
+ageGroupID INT,
+firstName VARCHAR(100) NOT NULL,
+lastName VARCHAR(100) NOT NULL,
+medicareNumber varchar(100) NOT NULL,
+dateOfBirth DATE NOT NULL,
+telephone VARCHAR(10),
+address VARCHAR(30) NOT NULL,
+city VARCHAR(50) NOT NULL,
+postal_code VARCHAR(6) NOT NULL,
+provinceID INT NOT NULL,
+email VARCHAR(100),
+FOREIGN KEY (ageGroupID ) REFERENCES AgeGroup(ID),
+FOREIGN KEY (provinceID ) REFERENCES Province(ID)
+) ;
+
+CREATE TABLE Employee(
+ID INT AUTO_INCREMENT PRIMARY KEY,
+firstName VARCHAR(100) NOT NULL,
+lastName VARCHAR(100) NOT NULL,
+medicareNumber VARCHAR(100),
+citizenship VARCHAR(100),
+dateOfBirth DATE NOT NULL,
+telephone VARCHAR(10),
+address VARCHAR(30) NOT NULL,
+city VARCHAR(50) NOT NULL,
+postal_code VARCHAR(6) NOT NULL,
+provinceID INT NOT NULL,
+SSN VARCHAR(10) NOT NULL,
+email VARCHAR(100),
+FOREIGN KEY (provinceID ) REFERENCES Province(ID)
+) ;
+
+CREATE TABLE Variant (
+ID INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(20) NOT NULL,
+Type VARCHAR(20) NOT NULL
+) ;
+
+CREATE TABLE CitizenshipStatus(
+patientID INT NOT NULL,
+isCitizen BIT NOT NULL,
+IDNumber VARCHAR(100) NOT NULL,
+FOREIGN KEY (patientID ) REFERENCES Patient(ID)
+) ;
+
+CREATE TABLE PatientInfection(
+patientID INT NOT NULL,
+variantID INT NOT NULL,
+dateOfInfection DATE NOT NULL,
+dateOfCure DATE NOT NULL,
+FOREIGN KEY (patientID ) REFERENCES Patient(ID),
+FOREIGN KEY (variantID ) REFERENCES Variant(ID)
+) ;
+
+CREATE TABLE Facility(
+ID INT AUTO_INCREMENT PRIMARY KEY,
+managerEmployeeRecordID INT NOT NULL,
+name VARCHAR(100) NOT NULL,
+telephone VARCHAR(10),
+address VARCHAR(30) NOT NULL,
+city VARCHAR(50) NOT NULL,
+postal_code VARCHAR(6) NOT NULL,
+provinceID INT NOT NULL,
+webAddress VARCHAR(100),
+type VARCHAR(30) NOT NULL,
+FOREIGN KEY (provinceID ) REFERENCES Province(ID),
+FOREIGN KEY (managerEmployeeRecordID) REFERENCES EmploymentRecord(ID)
+) ;
+
+CREATE TABLE Vaccine (
+ID INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+type VARCHAR(100) NOT NULL,
+dosesNeeded INT NOT NULL
+);
+
+CREATE TABLE Vaccination(
+ID INT AUTO_INCREMENT PRIMARY KEY,
+patientID INT NOT NULL,
+vaccineID INT NOT NULL,
+facilityID INT NOT NULL,
+FOREIGN KEY (patientID) REFERENCES Patient(ID),
+FOREIGN KEY (vaccineID) REFERENCES Vaccine(ID),
+FOREIGN KEY (facilityID) REFERENCES Facility(ID)
+) ;
+
+maximum of two ecords can be created per vaccination
+CREATE TABLE VaccinationDose(
+vaccinationID INT NOT NULL,
+employeeRecordID INT NOT NULL,
+dateGiven DATETIME DEFAULT NOW(),
+FOREIGN KEY (vaccinationID) REFERENCES Vaccination(ID),
+FOREIGN KEY (employeeRecordID) REFERENCES EmploymentRecord(ID)
+);
+
+CREATE TABLE Shipment(
+ID INT AUTO_INCREMENT PRIMARY KEY,
+facilityID INT NOT NULL,
+vaccineID INT NOT NULL,
+dateOfReception DATE NOT NULL,
+IsFacilityTransfer BIT NOT NULL,
+numberOfVaccinesRecieved INT NOT NULL,
+FOREIGN KEY (vaccineID) REFERENCES Vaccine(ID),
+FOREIGN KEY (facilityID) REFERENCES Facility(ID)
+);
+
+CREATE TABLE EmploymentRecord(
+ID INT AUTO_INCREMENT PRIMARY KEY,
+employeeID INT NOT NULL,
+facilityID INT NOT NULL,
+startDate DATE DEFAULT (CURDATE()),
+endDate DATE,
+numberOfVaccinesRecieved INT NOT NULL,
+FOREIGN KEY (employeeID) REFERENCES Employee(ID),
+FOREIGN KEY (facilityID) REFERENCES Facility(ID)
+);
+
+CREATE TABLE VaccineStatus(
+vaccineID INT NOT NULL,
+dateOfApproval DATE DEFAULT (CURDATE()),
+dateOfSuspension DATE,
+FOREIGN KEY (vaccineID) REFERENCES Vaccine(ID)
+) ;
+
+CREATE TABLE Inventory(
+facilityID INT NOT NULL,
+vaccineID INT NOT NULL,
+numberOfVaccinesAvailable INT,
+FOREIGN KEY (vaccineID) REFERENCES Vaccine(ID)
+) ;
+
+CREATE TABLE Transfer(
+shipmentID INT NOT NULL,
+facilityID INT NOT NULL,
+dateOfTransfer DATETIME DEFAULT NOW(),
+numberOfVaccinesTransfered INT NOT NULL,
+FOREIGN KEY (facilityID) REFERENCES Facility(ID),
+FOREIGN KEY (shipmentID) REFERENCES Shipment(ID)
+) ;
+
+
+INSERT INTO Province(name, code) values ('Quebec', 'Qc');
+INSERT INTO AgeGroup(lowerAgeBound, upperAgeBound) values (80, null);
+INSERT INTO Variant (name, type) values ('OG strain', 'Alpha');
+
+INSERT INTO Patient(AgeGroupID, firstName, lastName, dateOfBirth, telephone, address, city, postal_code, provinceID, email, medicareNumber)
+VALUES (1,'Abdul', 'Mirza', '1941-01-01', '3452342222', '69420 Nowhere Rd', 'Montreal', 'k3k0l1', 1, 'abdul@email.com', '374783837474');
+INSERT INTO CitizenshipStatus values (1,1,'40058876');
+INSERT INTO PatientInfection values (1,1,'2021-02-02', '2021-02-16');

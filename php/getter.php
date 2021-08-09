@@ -2,7 +2,7 @@
 require 'connection.php';
 
 $sql = $_GET["SQL"];
-$path = "/patients/$sql.txt";
+$path = "patients/$sql.txt";
 
 $myfile = fopen($path, "r") or die("Unable to open file!");
 
@@ -12,7 +12,7 @@ fclose($myfile);
 
 // these lines are needed when we need to bind parameters to our sql
 // prevents sql injection
-// $stmt = $conn->prepare($sql);
+ $stmt = $conn->prepare($sql);
 //
 // $stmt->bind_param("s", $var);
 
@@ -28,4 +28,4 @@ while($row = $result->fetch_assoc()) {
 
 $conn->close();
 
-echo json_encode($patients);
+echo json_encode($data);
