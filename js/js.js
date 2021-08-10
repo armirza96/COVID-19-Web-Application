@@ -1,13 +1,14 @@
 
 function doAjaxCall(dataToSend, uiParams,type = "GET"){
   if(type == "GET") {
-    return $.get("php/getter.php", dataToSend)
+    return $.get("php/base.php", dataToSend)
     .done(function( data ) {
+      console.log(data);
       data = JSON.parse(data);
       ajaxDone(data, uiParams);
     });
   } else {
-    return $.post("php/getter.php", postData)
+    return $.post("php/base.php", postData)
     .done(function( data ) {
       ajaxDone(data, uiParams);
     });
@@ -15,16 +16,23 @@ function doAjaxCall(dataToSend, uiParams,type = "GET"){
 }
 
 function ajaxDone(data, uiParams) {
-  console.log(data);
-  if( uiParams !== undefined && window[uiParams.callback] !== null) {
+  //console.log(data);
+  if(uiParams !== undefined && window[uiParams.callback] !== null) {
+
     if(data.length > 0) {
+
       const callback = window[uiParams.callback];
       const p = $(uiParams.parentEl);
-      p.empty();
 
-      for(const d of data) {
-        console.log(d);
-        callback(p, d);
+
+      if(uiParams.type == "UI_UPDATE") {
+        callback(p, data);
+      } else {
+        p.empty();
+        for(const d of data) {
+          console.log(d);
+
+        }
       }
     }
   }

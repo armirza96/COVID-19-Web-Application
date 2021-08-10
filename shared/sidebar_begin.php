@@ -5,8 +5,11 @@
 <nav id="sidebar">
          <!-- <?php // echo $sidebarHTML; ?>  -->
     <ul class="list-unstyled components" role="tablist">
+        <li class="height_100 w-100">
+          <a href="index.php" class="height_100 padding_0" aria-selected="true">Reports</a>
+        </li>
       <li class="height_100 w-100">
-        <a href="index.php" class="height_100 padding_0" aria-selected="true">Patients</a>
+        <a href="patients.php" class="height_100 padding_0" aria-selected="true">Patients</a>
       </li>
       <li class="height_100 w-100">
         <a href="healthcareWorker.php" class="height_100 padding_0" aria-selected="true">Healthcare</a>

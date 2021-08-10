@@ -62,7 +62,7 @@ patientID INT NOT NULL,
 variantID INT NOT NULL,
 dateOfInfection DATE NOT NULL,
 dateOfCure DATE NOT NULL,
-FOREIGN KEY (patientID ) REFERENCES Patient(ID),
+FOREIGN KEY (patientID ) REFERENCES Patient(ID) ON DELETE CASCADE,
 FOREIGN KEY (variantID ) REFERENCES Variant(ID)
 ) ;
 
@@ -152,6 +152,8 @@ FOREIGN KEY (facilityID) REFERENCES Facility(ID),
 FOREIGN KEY (shipmentID) REFERENCES Shipment(ID)
 ) ;
 
+-- Set FOREIGN_KEY_CHECKS = 1
+-- drop table PatientInfection
 
 INSERT INTO Province(name, code) values ('Quebec', 'Qc');
 INSERT INTO AgeGroup(lowerAgeBound, upperAgeBound) values (80, null);

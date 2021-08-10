@@ -1,0 +1,6 @@
+SELECT
+  ID,
+  NAME,
+  CODE
+FROM
+  Province
