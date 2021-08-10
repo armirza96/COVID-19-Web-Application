@@ -7,7 +7,7 @@
 ?>
 <br />
 <h2 class="float-left">Patients</h2>
-<a href="patient.php?PATIENT_ID=-1" class="btn btn-sm btn-info float-right">Add a Patient</a>
+<a href="patientAdd.php" class="btn btn-sm btn-info float-right">Add a Patient</a>
 
 <table class="table">
   <thead class="thead-dark">
@@ -29,7 +29,7 @@
 
   $jsToAddAfter[] = '<script>
 
-                  doAjaxCall({PAGE: "getPatients"}, {callback: "addPatientsToUI", parentEl: "#tableBody"});
+                  doAjaxCall({PAGE: "getPatients"}, {callback: "addPatientsToUI", parentEl: "#tableBody", type: "ADD_TO_UI"});
                 //  ajaxDone([{"NAME": "MARK", "LASTNAME": "JOHN", "ID": 1}], {callback: "addPatientsToUI", parentEl: "#tableBody"});
 
                   function addPatientsToUI(parentEl, data) {

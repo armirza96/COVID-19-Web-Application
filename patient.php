@@ -12,32 +12,33 @@ require_once("php/getter.php");
 
 $patient = getData("php/patients/getPatient/getPatient.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$patientID]])[0];
 $infections = getData("php/patients/getPatient/getPatientInfections.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$patientID]]);
-$provinces = getData("php/province/getProvince/getProvinces.txt")
+$provinces = getData("php/province/getProvince/getProvinces.txt");
+$ageGroups = getData("php/ageGroups/getAgeGroups.txt");
+
 ?>
 <br />
 <div style="display: flex; justify-content: space-between;">
-  <?php if($patient) : ?>
-    <h2 >
-    Edit Patient: <?="{$patient['FIRST_NAME']} {$patient['LAST_NAME']}";?>
-    </h2>
-    <button onclick="deletePatient(<?=$patientID?>)" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Patient</button>
-  <?php else : ?>
-    <h2 >
-    Add Patient
-    </h2>
-  <?php endif; ?>
+
+  <h2 >
+  Edit Patient: <?="{$patient['FIRST_NAME']} {$patient['LAST_NAME']}";?>
+  </h2>
+  <button onclick="deletePatient(<?=$patientID?>)" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Patient</button>
 
 </div>
 
 <form>
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
       <label for="firstName">First Name</label>
-      <input type="text" class="form-control" id="firstName" placeholder="First Name" value="<?=$patient["FIRST_NAME"]?>">
+      <input type="text" class="form-control" id="firstName" placeholder="First Name" name="FIRST_NAME">
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
       <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" id="lastName" placeholder="lastName" value="<?=$patient["LAST_NAME"]?>">
+      <input type="text" class="form-control" id="lastName" placeholder="lastName" name="LAST_NAME">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="medicareNumber">Medicare</label>
+      <input type="text" class="form-control" id="medicareNumber" placeholder="medicare #" name="MEDICARE" value="<?=$patient["medicareNumber"]?>">
     </div>
   </div>
   <div class="form-row">
@@ -79,23 +80,39 @@ $provinces = getData("php/province/getProvince/getProvinces.txt")
     </div>
   </div>
 
-<h3>Citizenship status</h3>
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="IDNumber">ID Number</label>
-      <input type="text" class="form-control" id="IDNumber" placeholder="SSN # or passport #" value="<?=$patient["IDNumber"]?>">
+  <h3>Age Group</h3>
+    <div class="form-row">
+
+      <div class="form-group col-md-4">
+        <label for="inputAge">What age group do they belong to?</label>
+
+          <select id="inputAge" class="form-control" name="AGE_GROUP">
+            <?php foreach($ageGroups as $group): ?>
+              <option <?php echo ($patient["AgeGroupID"] === $group["ID"] ? "selected" : "") ?>><?="{$group['lowerAgeBound']} - {$group['upperAgeBound']}"; ?></option>
+            <?php endforeach; ?>
+          </select>
+
+      </div>
+
     </div>
 
-    <div class="form-group col-md-4">
-      <label for="inputState">Is a Ctizen of Canada?</label>
-      <select id="inputState" class="form-control">
-        <?php foreach(array("YES", "NO") as $ans): ?>
-          <option <?php echo ($patient["IS_CITIZEN"] === $ans ? "selected" : "") ?>><?=$ans?></option>
-        <?php endforeach; ?>
-      </select>
-    </div>
+  <h3>Citizenship status</h3>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="IDNumber">ID Number</label>
+        <input type="text" class="form-control" id="IDNumber" placeholder="SSN # or passport #" value="<?=$patient["IDNumber"]?>">
+      </div>
 
-  </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">Is a Ctizen of Canada?</label>
+        <select id="inputState" class="form-control">
+          <?php foreach(array("YES", "NO") as $ans): ?>
+            <option <?php echo ($patient["IS_CITIZEN"] === $ans ? "selected" : "") ?>><?=$ans?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+    </div>
 
   <button type="submit" class="btn btn-primary float-right">Save</button>
 </form>
@@ -126,7 +143,6 @@ $provinces = getData("php/province/getProvince/getProvinces.txt")
     <?php endforeach; ?>
   </tbody>
 </table>
-
 
 <div class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">

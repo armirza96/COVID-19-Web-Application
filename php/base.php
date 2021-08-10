@@ -1,5 +1,5 @@
 <?php
-$pageToHit = $_GET["PAGE"];
+$pageToHit = $_GET["PAGE"] ?? $_POST["PAGE"];
 
 switch($pageToHit) {
   case "getPatients":
@@ -7,6 +7,9 @@ switch($pageToHit) {
   break;
   case "deletePatient":
     require_once("patients/deletePatient/deletePatient.php");
+  break;
+  case "addPatient":
+    require_once("patients/addPatient/addPatient.php");
   break;
   default:
   break;

@@ -1,0 +1,10 @@
+SELECT
+  ID,
+  lowerAgeBound,
+  CASE WHEN upperAgeBound IS NULL THEN
+    9999
+  ELSE
+    upperAgeBound
+  END upperAgeBound
+FROM
+  AgeGroup
