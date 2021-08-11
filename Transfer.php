@@ -5,6 +5,10 @@ require "shared/navbar2.php";
 
 require "shared/sidebar_begin.php";
 
+require_once("php/getter.php");
+
+$facilities = getData("php/facility/get/getFacilities.txt");
+
 ?>
 <br />
 <div style="display: flex; justify-content: space-between;">
@@ -19,13 +23,25 @@ require "shared/sidebar_begin.php";
 <form>
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="FromFacilityID">From Facility ID</label>
-      <input type="text" class="form-control" id="FromFacilityID" placeholder=" From Facility ID" name="FROMFACILITY_ID">
+      <label for="facilityID">From Facility</label>
+
+        <select id="facilityID" class="form-control" name="FACILITY_ID">
+          <?php foreach($facilities as $f): ?>
+            <option value="<?=$f["ID"]?>"><?=$f["NAME"]?></option>
+          <?php endforeach; ?>
+        </select>
+
     </div>
 	
 	<div class="form-group col-md-4">
-      <label for="ToFacilityID">To Facility ID</label>
-      <input type="text" class="form-control" id="ToFacilityID" placeholder="To Facility ID" name="ToFACILITY_ID">
+      <label for="facilityID">To Facility</label>
+
+        <select id="facilityID" class="form-control" name="FACILITY_ID">
+          <?php foreach($facilities as $f): ?>
+            <option value="<?=$f["ID"]?>"><?=$f["NAME"]?></option>
+          <?php endforeach; ?>
+        </select>
+
     </div>
 	
     <div class="form-group col-md-4">
