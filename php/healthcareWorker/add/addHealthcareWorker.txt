@@ -1,0 +1,14 @@
+INSERT INTO Employee
+  (firstName,
+  lastName,
+  dateOfBirth,
+  telephone,
+  address,
+  city,
+  postal_code,
+  provinceID,
+  SSN,
+  email,
+  medicareNumber)
+VALUES
+  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
