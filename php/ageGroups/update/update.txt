@@ -1,0 +1,5 @@
+UPDATE AgeGroup
+SET
+  lowerAgeBound = ?,
+  upperAgeBound = ?
+WHERE ID = ?

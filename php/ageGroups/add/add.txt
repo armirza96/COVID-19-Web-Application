@@ -1,0 +1,4 @@
+INSERT INTO AgeGroup
+  (lowerAgeBound, upperAgeBound)
+VALUES
+  (?, ?);

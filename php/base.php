@@ -61,6 +61,19 @@ switch($pageToHit) {
    case "provinces/delete":
      require_once("provinces/delete/delete.php");
    break;
+   ///////////////////////////////////////////////////////////////////////////// Age Groups
+    case "ageGroups/get":
+      require_once("ageGroups/get/get.php");
+    break;
+    case "ageGroups/update":
+      require_once("ageGroups/update/update.php");
+    break;
+    case "ageGroups/add":
+      require_once("ageGroups/add/add.php");
+    break;
+    case "ageGroups/delete":
+      require_once("ageGroups/delete/delete.php");
+    break;
   default:
     $data = ["RESULT" => "2", "MESSAGE" => "Command not added to base.php"];
   break;

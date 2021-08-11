@@ -17,7 +17,7 @@ $data = getData("php/ageGroups/get/getAgeGroup.txt", ["BINDING_TYPES" => "i", "V
 <div style="display: flex; justify-content: space-between;">
 
   <h2 >
-  Edit Age Group: <?="{$data['NAME']}";?>
+  Edit Age Group: <?="{$data['ID']}";?>
   </h2>
   <button onclick="deleteAgeGroup(<?=$id?>)" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Age Group</button>
 
@@ -25,13 +25,15 @@ $data = getData("php/ageGroups/get/getAgeGroup.txt", ["BINDING_TYPES" => "i", "V
 
 <form>
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Name" name="NAME" value="<?=$data["NAME"]?>">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="type">Type</label>
-      <input type="text" class="form-control" id="type" placeholder="Type: Alpha, Lambda, Delta" name="TYPE" value="<?=$data["TYPE"]?>">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="lab">Lower Age Bound</label>
+        <input type="number" class="form-control" id="lab" placeholder="Lower Age Bound" name="LOWER_AGE_BOUND" value="<?=$data["LOWER_AGE_BOUND"]?>">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lab">Upper Age Bound</label>
+        <input type="number" class="form-control" id="lab" placeholder="Upper Age Bound" name="UPPER_AGE_BOUND" value="<?=$data["UPPER_AGE_BOUND"]?>">
+      </div>
     </div>
   </div>
 
@@ -45,7 +47,7 @@ $data = getData("php/ageGroups/get/getAgeGroup.txt", ["BINDING_TYPES" => "i", "V
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Variant: <?="{$data['NAME']}";?></h5>
+        <h5 class="modal-title">Variant: <?="{$data['ID']}";?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -70,7 +72,7 @@ $data = getData("php/ageGroups/get/getAgeGroup.txt", ["BINDING_TYPES" => "i", "V
   function edit(id) {
         $(".alert").hide();
         $("#processModal").modal("toggle");
-        let dataToSend = {PAGE: "ageGroup/update"};
+        let dataToSend = {PAGE: "ageGroups/update"};
         $("form :input").each(function(){
             const name = $(this).attr("name");
             const value = $(this).val();
@@ -99,7 +101,7 @@ $data = getData("php/ageGroups/get/getAgeGroup.txt", ["BINDING_TYPES" => "i", "V
     function deleteAgeGroup(id) {
       $(".alert").hide();
       $("#processModal").modal("toggle");
-      doAjaxCall({PAGE: "ageGroup/delete", "ID": id}, {callback: "showDeletedAlert", parentEl: ".modal-body", type: "UI_UPDATE"}, "POST");
+      doAjaxCall({PAGE: "ageGroups/delete", "ID": id}, {callback: "showDeletedAlert", parentEl: ".modal-body", type: "UI_UPDATE"}, "POST");
     }
 
     function showDeletedAlert(parentEl, data) {
