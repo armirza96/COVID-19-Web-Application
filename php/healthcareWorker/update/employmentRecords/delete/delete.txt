@@ -1,5 +1,5 @@
 DELETE
 FROM
-  PatientInfection
+  EmploymentRecord
 WHERE
   ID = ?

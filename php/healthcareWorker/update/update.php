@@ -1,42 +1,34 @@
 <?php
 require_once("././updater.php");
 
-$patientID = $_POST["PATIENT_ID"];
+$healthcareWorkerID = $_POST["EMPLOYEE_ID"];
 $bindings = [];
-$bindings["BINDING_TYPES"] = "isssssssissi";
+$bindings["BINDING_TYPES"] = "ssssssssissssi";
 $bindings["VALUES"] = array(
-                                $_POST["AGE_GROUP"],
                                 $_POST["FIRST_NAME"],
                                 $_POST["LAST_NAME"],
                                 $_POST["DOB"],
                                 $_POST["PHONE"],
+                                $_POST["TELEPHONE"],
                                 $_POST["ADDRESS"],
                                 $_POST["CITY"],
                                 $_POST["POSTAL_CODE"],
                                 $_POST["PROVINCE"],
+                                $_POST["SSN"],
                                 $_POST["EMAIL"],
+                                $_POST["CITIZENSHIP"],
                                 $_POST["MEDICARE"],
-                                $patientID
+                                $healthcareWorkerID
                         );
 
 $result = updateData("patients/update/updatePatient.txt", $bindings);
 
-$bindings["BINDING_TYPES"] = "isi";
-$bindings["VALUES"] = array(
-                                $_POST["IS_CITIZEN"],
-                                $_POST["ID_NUMBER"],
-                                $patientID
-                        );
-
-$result = updateData("patients/update/updateCitizenshipStatus.txt", $bindings);
-
-
 $data = [];
 
 if($result["RESULT"] === 1) {
-        $data = ["RESULT" => "1", "MESSAGE" => "Successfully Updated!", "ID" => $patientID];
+        $data = ["RESULT" => "1", "MESSAGE" => "Successfully Updated!", "ID" => $healthcareWorkerID];
 } else {
-        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to upate Patient."];
+        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to upate Employee."];
 }
 
 // returnData is used in base.php

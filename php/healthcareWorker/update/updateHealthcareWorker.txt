@@ -1,6 +1,5 @@
-UPDATE Patient
+UPDATE Employee
 SET
-  AgeGroupID = ?,
   firstName = ?,
   lastName  = ?,
   dateOfBirth = ?,
@@ -9,6 +8,8 @@ SET
   city = ?,
   postal_code = ?,
   provinceID = ?,
+  SSN = ?,
   email = ?,
+  citizenship = ?,
   medicareNumber = ?
 WHERE ID = ?

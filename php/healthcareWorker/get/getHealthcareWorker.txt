@@ -10,13 +10,7 @@ SELECT
   provinceID,
   email,
   medicareNumber,
-  CASE WHEN CS.isCitizen = 1 THEN
-	'YES'
-  ELSE
-	'NO'
-  END IS_CITIZEN,
-  CS.IDNumber
+  citizenship
 FROM
   Employee P
-LEFT JOIN CitizenshipStatus CS ON CS.patientID = P.ID
 WHERE ID = ?

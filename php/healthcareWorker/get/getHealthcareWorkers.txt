@@ -9,6 +9,7 @@ SELECT
   postal_code,
   provinceID,
   email,
-  medicareNumber
+  citizenship,
+  medicareNumber,
 FROM
 Employee

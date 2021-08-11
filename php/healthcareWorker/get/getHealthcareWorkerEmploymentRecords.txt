@@ -7,4 +7,4 @@ FROM
   Employee E
 INNER JOIN EmploymentRecord ER ON ER.employeeID = E.ID
 WHERE
-  P.ID = ?
+  E.ID = ?
