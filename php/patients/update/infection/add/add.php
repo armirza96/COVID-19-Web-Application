@@ -16,7 +16,7 @@ if(!empty($cureDate)) {
                                         $cureDate
 
                                 );
-        $result = insertData("patients/updatePatient/addInfection/addInfection.txt", $bindings);
+        $result = insertData("patients/update/infection/add/addInfection.txt", $bindings);
 } else {
         $bindings["BINDING_TYPES"] = "iis";
         $bindings["VALUES"] = array(
@@ -24,7 +24,7 @@ if(!empty($cureDate)) {
                                         $_POST["VARIANT"],
                                         $_POST["INFECTION_DATE"]
                                 );
-        $result = insertData("patients/updatePatient/addInfection/addInfectionWithoutCureDate.txt", $bindings);
+        $result = insertData("patients/update/infection/add/addInfectionWithoutCureDate.txt", $bindings);
 }
 
 

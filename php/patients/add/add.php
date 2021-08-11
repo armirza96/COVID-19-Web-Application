@@ -1,9 +1,9 @@
 <?php
-require_once("././updater.php");
+require_once("././inserter.php");
 
-$patientID = $_POST["PATIENT_ID"];
 $bindings = [];
-$bindings["BINDING_TYPES"] = "isssssssissi";
+
+$bindings["BINDING_TYPES"] = "isssssssiss";
 $bindings["VALUES"] = array(
                                 $_POST["AGE_GROUP"],
                                 $_POST["FIRST_NAME"],
@@ -15,29 +15,28 @@ $bindings["VALUES"] = array(
                                 $_POST["POSTAL_CODE"],
                                 $_POST["PROVINCE"],
                                 $_POST["EMAIL"],
-                                $_POST["MEDICARE"],
-                                $patientID
+                                $_POST["MEDICARE"]
                         );
 
-$result = updateData("patients/updatePatient/updatePatient.txt", $bindings);
+$result = insertData("patients/add/addPatient.txt", $bindings);
 
-$bindings["BINDING_TYPES"] = "isi";
-$bindings["VALUES"] = array(
+$patientID = $result["LAST_INSERTED_ID"];
+
+$bindings["BINDING_TYPES"] = "iis";
+$bindings["VALUES"] = array(    $patientID,
                                 $_POST["IS_CITIZEN"],
                                 $_POST["ID_NUMBER"],
-                                $patientID
                         );
-
-$result = updateData("patients/updatePatient/updateCitizenshipStatus.txt", $bindings);
+$result = insertData("patients/add/addCitizenshipStatus.txt", $bindings);
 
 
 $data = [];
 
 if($result["RESULT"] === 1) {
-        $data = ["RESULT" => "1", "MESSAGE" => "Successfully Updated!", "ID" => $patientID];
+        $data = ["RESULT" => "1", "MESSAGE" => "Successfully Added!", "ID" => $patientID];
 } else {
-        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to upate Patient."];
+        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to add Patient."];
 }
 
 // returnData is used in base.php
-//
+// continues in delete.php

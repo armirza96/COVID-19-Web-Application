@@ -10,7 +10,7 @@ $bindings["VALUES"] = array(
 
 
                             );
-$result = deleteData("patients/updatePatient/deleteInfection/deleteInfection.txt", $bindings);
+$result = deleteData("patients/update/infection/delete/delete.txt", $bindings);
 
 
 $data = [];

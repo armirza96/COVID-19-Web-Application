@@ -10,11 +10,11 @@ $patientID = $_GET["PATIENT_ID"] ?? -1;
 
 require_once("php/getter.php");
 
-$patient = getData("php/patients/getPatient/getPatient.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$patientID]])[0];
-$infections = getData("php/patients/getPatient/getPatientInfections.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$patientID]]);
-$provinces = getData("php/province/getProvince/getProvinces.txt");
-$ageGroups = getData("php/ageGroups/getAgeGroups.txt");
-$variants = getData("php/variants/getVariants/getVariants.txt");
+$patient = getData("php/patients/get/getPatient.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$patientID]])[0];
+$infections = getData("php/patients/get/getPatientInfections.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$patientID]]);
+$provinces = getData("php/province/get/get.txt");
+$ageGroups = getData("php/ageGroups/get/get.txt");
+$variants = getData("php/variants/get/get.txt");
 
 ?>
 <br />

@@ -29,6 +29,29 @@ function showEditPatientAlert(parentEl, data) {
   }
 }
 
+
+
+function deletePatient(patientID) {
+  $('.alert').hide();
+  $('#processModal').modal('toggle');
+  doAjaxCall({PAGE: 'deletePatient', 'PATIENT_ID': patientID}, {callback: 'showDeletedPatientAlert', parentEl: '.modal-body', type: 'UI_UPDATE'}, 'POST');
+}
+
+function showDeletedPatientAlert(parentEl, data) {
+  if(data.RESULT == 1) {
+    $('.alert-success').text(data.MESSAGE+ ' Dismissing in 3 seconds');
+    $('.alert-success').show();
+    setTimeout(function(){
+      //$('#processModal').modal('toggle');
+      window.location.href = `patients.php`;
+    }, 3000);
+
+  } else {
+    $('.alert-danger').text(data.MESSAGE);
+    $('.alert-danger').show();
+  }
+}
+
 function addInfection(patientID) {
   //  $('#processModal').modal('toggle');
     let dataToSend = {PAGE: 'addInfection'};
@@ -57,27 +80,6 @@ function showAddedInfectionAlert(parentEl, data) {
   }
 }
 
-
-function deletePatient(patientID) {
-  $('.alert').hide();
-  $('#processModal').modal('toggle');
-  doAjaxCall({PAGE: 'deletePatient', 'PATIENT_ID': patientID}, {callback: 'showDeletedPatientAlert', parentEl: '.modal-body', type: 'UI_UPDATE'}, 'POST');
-}
-
-function showDeletedPatientAlert(parentEl, data) {
-  if(data.RESULT == 1) {
-    $('.alert-success').text(data.MESSAGE+ ' Dismissing in 3 seconds');
-    $('.alert-success').show();
-    setTimeout(function(){
-      //$('#processModal').modal('toggle');
-      window.location.href = `patients.php`;
-    }, 3000);
-
-  } else {
-    $('.alert-danger').text(data.MESSAGE);
-    $('.alert-danger').show();
-  }
-}
 
 function deleteInfection(infectionID) {
   $('.alert').hide();

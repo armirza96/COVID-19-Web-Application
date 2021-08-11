@@ -39,3 +39,7 @@ function ajaxDone(data, uiParams) {
 function isArray(obj) {
     return Object.prototype.toString.call(obj) === '[object Array]';
 }
+
+$('.modal').on('hidden.bs.modal', function (e) {
+  $(".alert").hide();
+})

@@ -6,8 +6,9 @@ require "shared/navbar2.php";
 require "shared/sidebar_begin.php";
 
 require_once("php/getter.php");
-$provinces = getData("php/province/getProvince/getProvinces.txt");
-$ageGroups = getData("php/ageGroups/getAgeGroups.txt");
+$provinces = getData("php/province/get/get.txt");
+$ageGroups = getData("php/ageGroups/get/get.txt");
+
 ?>
 <br />
 <div style="display: flex; justify-content: space-between;">

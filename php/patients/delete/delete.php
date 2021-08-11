@@ -5,7 +5,7 @@ $bindings["BINDING_TYPES"] = "i";
 $bindings["VALUES"] = array(
                                 $_POST["PATIENT_ID"]
                         );
-$result = deleteData("patients/deletePatient/deletePatient.txt", $bindings);
+$result = deleteData("patients/delete/delete.txt", $bindings);
 
 $data = [];
 
