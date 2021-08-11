@@ -1,14 +1,4 @@
-INSERT INTO Patient
-  (AgeGroupID,
-  firstName,
-  lastName,
-  dateOfBirth,
-  telephone,
-  address,
-  city,
-  postal_code,
-  provinceID,
-  email,
-  medicareNumber)
+INSERT INTO Variant
+  (name, Type)
 VALUES
-  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+  (?, ?);

@@ -3,39 +3,23 @@ require_once("././inserter.php");
 
 $bindings = [];
 
-$bindings["BINDING_TYPES"] = "isssssssiss";
+$bindings["BINDING_TYPES"] = "ss";
 $bindings["VALUES"] = array(
-                                $_POST["AGE_GROUP"],
-                                $_POST["FIRST_NAME"],
-                                $_POST["LAST_NAME"],
-                                $_POST["DOB"],
-                                $_POST["PHONE"],
-                                $_POST["ADDRESS"],
-                                $_POST["CITY"],
-                                $_POST["POSTAL_CODE"],
-                                $_POST["PROVINCE"],
-                                $_POST["EMAIL"],
-                                $_POST["MEDICARE"]
+                                $_POST["NAME"],
+                                $_POST["TYPE"],
                         );
 
-$result = insertData("patients/addPatient/addPatient.txt", $bindings);
+$result = insertData("variants/add/add.txt", $bindings);
 
-$patientID = $result["LAST_INSERTED_ID"];
-
-$bindings["BINDING_TYPES"] = "iis";
-$bindings["VALUES"] = array(    $patientID,
-                                $_POST["IS_CITIZEN"],
-                                $_POST["ID_NUMBER"],
-                        );
-$result = insertData("patients/addPatient/addCitizenshipStatus.txt", $bindings);
+$variantID = $result["LAST_INSERTED_ID"];
 
 
 $data = [];
 
 if($result["RESULT"] === 1) {
-        $data = ["RESULT" => "1", "MESSAGE" => "Successfully Added!", "ID" => $patientID];
+        $data = ["RESULT" => "1", "MESSAGE" => "Variant Successfully Added!", "ID" => $variantID];
 } else {
-        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to add Patient."];
+        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to add variant."];
 }
 
 // returnData is used in base.php

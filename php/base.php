@@ -1,6 +1,8 @@
 <?php
 $pageToHit = $_GET["PAGE"] ?? $_POST["PAGE"];
 
+$data = [];
+
 switch($pageToHit) {
   case "getPatients":
     require_once("patients/get/getPatients.php");
@@ -20,7 +22,20 @@ switch($pageToHit) {
   case "deleteInfection":
     require_once("patients/update/infection/delete/delete.php");
   break;
+  case "variants/get":
+    require_once("variants/get/get.php");
+  break;
+  case "variants/update":
+    require_once("variants/update/update.php");
+  break;
+  case "variants/add":
+    require_once("variants/add/add.php");
+  break;
+  case "variants/delete":
+    require_once("variants/delete/delete.php");
+  break;
   default:
+    $data = ["RESULT" => "2", "MESSAGE" => "Command not added to base.php"];
   break;
 }
 

@@ -17,7 +17,9 @@
       <li class="height_100 w-100">
         <a href="province.php" class="height_100 padding_0" aria-selected="true">Province</a>
       </li>
-
+      <li class="height_100 w-100">
+        <a href="variants.php" class="height_100 padding_0" aria-selected="true">Variants</a>
+      </li>
       <li class="height_100 w-100">
         <a href="ageGroup.php" class="height_100 padding_0" aria-selected="true">Age group</a>
       </li>

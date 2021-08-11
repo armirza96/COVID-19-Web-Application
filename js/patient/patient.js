@@ -29,8 +29,6 @@ function showEditPatientAlert(parentEl, data) {
   }
 }
 
-
-
 function deletePatient(patientID) {
   $('.alert').hide();
   $('#processModal').modal('toggle');

@@ -1,0 +1,4 @@
+DELETE
+FROM
+  Variant
+WHERE ID = ?

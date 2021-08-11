@@ -1,0 +1,7 @@
+SELECT
+  ID,
+  NAME,
+  TYPE
+FROM
+  Variant
+WHERE ID = ?
