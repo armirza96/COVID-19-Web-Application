@@ -1,0 +1,19 @@
+<?php
+require_once("php/getter.php");
+
+$data = getData("php/reports/q18/sql.txt");
+
+$columnNames =
+[ "NAME",
+	  "ADDRESS",
+	  "TYPE",
+	  "PHONE",
+	  "TOTAL_HEALTH_CARE_WORKERS_EMPLOYED",
+	  "TOTAL_NUMBER_OF_SHIPMENTS",
+	  "TOTAL_NUMBER_OF_VACCINES_RECEIVED",
+    "TOTAL_NUMBER_OF_TRANSERS",
+    "TOTAL_NUMBER_OF_TRANSERS_FROM",
+	  "TOTAL_NUMBER_OF_TRANSERS_TO",
+	  "TOTAL_VACCINE_TYPES",
+	  "TOTAL_NUMBER_OF_PEOPLE_VACCINATED",
+	  "TOTAL_NUMBER_OF_DOSES_GIVEN"];

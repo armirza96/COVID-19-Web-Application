@@ -1,7 +1,7 @@
 <?php
 require_once("php/getter.php");
 
-$data = getData("php/reports/q12/q12.txt");
+$data = getData("php/reports/q13/sql.txt");
 
 $columnNames = [ "FIRST_NAME",
   "LAST_NAME",

@@ -9,7 +9,31 @@
 
   switch($id) {
     case "Q12":
-    require_once("php/reports/q12/q12.php");
+    require_once("php/reports/q12/q.php");
+    break;
+    case "Q13":
+    require_once("php/reports/q13/q.php");
+    break;
+    case "Q14":
+    require_once("php/reports/q14/q.php");
+    break;
+    case "Q15":
+    require_once("php/reports/q15/q.php");
+    break;
+    case "Q16":
+    require_once("php/reports/q16/q.php");
+    break;
+    case "Q17":
+    require_once("php/reports/q17/q.php");
+    break;
+    case "Q18":
+    require_once("php/reports/q18/q.php");
+    break;
+    case "Q19":
+    require_once("php/reports/q19/q.php");
+    break;
+    case "Q20":
+    require_once("php/reports/q20/q.php");
     break;
     default:
     break;
@@ -43,7 +67,7 @@
 <?php
   require "shared/sidebar_end.php";
 
-
+  $jsToAddAfter = [];
 
   require 'shared/footer.php';
 ?>

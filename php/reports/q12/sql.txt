@@ -14,5 +14,14 @@ SELECT
 FROM Patient P
 	INNER JOIN Vaccination VCN ON VCN.patientID = P.ID
     INNER JOIN Vaccine VCNE ON VCNE.ID = VCN.vaccineID
-    INNER JOIN VaccinationDose VCD ON VCD.vaccinationID = VCN.ID
 WHERE P.ageGroupID IN (1,2,3)
+GROUP BY
+  FIRST_NAME,
+  LAST_NAME,
+  DOB,
+  EMAIL,
+  PHONE,
+  CITY,
+  DATE_GIVEN,
+  VACCINE_TYPE
+HAVING COUNT(dateGiven) = 1

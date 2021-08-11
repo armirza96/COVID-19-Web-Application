@@ -1,0 +1,30 @@
+SELECT
+  firstName as FIRST_NAME,
+  lastName as LAST_NAME,
+  dateOfBirth as DOB,
+  email as EMAIL,
+  telephone as PHONE,
+  CITY,
+  dateGiven as DATE_GIVEN,
+  VCNE.type as VACCINE_TYPE,
+  Count(PI.dateOfInfection) as COUNT_OF_INFECTIONS
+FROM Patient P
+	LEFT JOIN PatientInfection PI ON PI.patientID = P.ID
+    LEFT JOIN PatientInfection PI2 ON PI2.patientID = P.ID
+	INNER JOIN Vaccination VCN ON VCN.patientID = P.ID
+    INNER JOIN Vaccine VCNE ON VCNE.ID = VCN.vaccineID
+--     INNER JOIN Variant V ON V.ID = PI.variantID
+--     INNER JOIN Variant V2 ON V2.ID = PI.variantID
+WHERE
+	P.ageGroupID IN (1,2,3) AND
+    -- V.ID <> V2.ID
+    PI2.variantID <> PI.variantID
+GROUP BY
+  FIRST_NAME,
+  LAST_NAME,
+  DOB,
+  EMAIL,
+  PHONE,
+  CITY,
+  DATE_GIVEN,
+  VACCINE_TYPE
