@@ -3,7 +3,7 @@ require_once("././inserter.php");
 
 $bindings = [];
 
-$bindings["BINDING_TYPES"] = "ssssssssisss";
+$bindings["BINDING_TYPES"] = "ssssssssissss";
 $bindings["VALUES"] = array(
                                 $_POST["FIRST_NAME"],
                                 $_POST["LAST_NAME"],
@@ -15,7 +15,8 @@ $bindings["VALUES"] = array(
                                 $_POST["POSTAL_CODE"],
                                 $_POST["PROVINCE"],
                                 $_POST["SSN"],
-                                $_POST["EMAIL"]
+                                $_POST["EMAIL"],
+                                $_POST["CITIZENSHIP"],
                                 $_POST["MEDICARE"]
                         );
 
@@ -23,20 +24,12 @@ $result = insertData("healthcareWorker/add/addHealthcareWorker.txt", $bindings);
 
 $healthcareWorkerID = $result["LAST_INSERTED_ID"];
 
-$bindings["BINDING_TYPES"] = "iis";
-$bindings["VALUES"] = array(    $healthcareWorkerID,
-                                $_POST["IS_CITIZEN"],
-                                $_POST["ID_NUMBER"],
-                        );
-$result = insertData("healthcareWorker/add/addCitizenshipStatus.txt", $bindings);
-
-
 $data = [];
 
 if($result["RESULT"] === 1) {
         $data = ["RESULT" => "1", "MESSAGE" => "Successfully Added!", "ID" => $healthcareWorkerID];
 } else {
-        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to add Patient."];
+        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to add Employee."];
 }
 
 // returnData is used in base.php

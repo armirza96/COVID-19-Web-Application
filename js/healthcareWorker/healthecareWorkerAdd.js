@@ -1,4 +1,4 @@
-function addPatient() {
+function addEmployee() {
     $('.modal').modal('toggle')
     let dataToSend = {PAGE: 'addPatient'};
     $('form :input').each(function(){
@@ -12,7 +12,7 @@ function addPatient() {
     doAjaxCall(dataToSend, {callback: 'showAddedPatientAlert', parentEl: 'body', type: 'UI_UPDATE'}, 'POST');
 }
 
-function showAddedPatientAlert(parentEl, data) {
+function showAddedEmployeeAlert(parentEl, data) {
   if(data.RESULT == 1) {
     $('.alert-success').text(data.MESSAGE + '. ' + 'Redirecting in 3 seconds');
     $('.alert-success').show();

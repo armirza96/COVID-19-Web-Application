@@ -1,0 +1,10 @@
+SELECT
+       ER.ID,
+        E.firstName,
+        ER.startDate,
+        ER.endDate
+FROM
+  Employee E
+INNER JOIN EmploymentRecord ER ON ER.employeeID = E.ID
+WHERE
+  P.ID = ?

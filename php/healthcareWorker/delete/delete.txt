@@ -1,4 +1,4 @@
 DELETE
 FROM
-  Patient
+  Employee
 WHERE ID = ?

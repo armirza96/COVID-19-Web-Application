@@ -3,9 +3,9 @@ require_once("././deleter.php");
 
 $bindings["BINDING_TYPES"] = "i";
 $bindings["VALUES"] = array(
-                                $_POST["PATIENT_ID"]
+                                $_POST["EMPLOYEE_ID"]
                         );
-$result = deleteData("patients/delete/delete.txt", $bindings);
+$result = deleteData("healthcareWorker/delete/delete.txt", $bindings);
 
 $data = [];
 

@@ -1,7 +1,7 @@
-function editPatient(patientID) {
+function editEmployee(patientID) {
     $('.alert').hide();
     $('#processModal').modal('toggle');
-    let dataToSend = {PAGE: 'updatePatient'};
+    let dataToSend = {PAGE: 'updateEmployee'};
     $('#formPatient :input').each(function(){
         const name = $(this).attr('name');
         const value = $(this).val();
@@ -14,7 +14,7 @@ function editPatient(patientID) {
     doAjaxCall(dataToSend, {callback: 'showEditPatientAlert', parentEl: '.modal-body', type: 'UI_UPDATE'}, 'POST');
 }
 
-function showEditPatientAlert(parentEl, data) {
+function showEditEmployeeAlert(parentEl, data) {
   if(data.RESULT == 1) {
     $('.alert-success').text(data.MESSAGE+ '. ' + 'Dismissing in 3 seconds');
     $('.alert-success').show();
@@ -29,7 +29,7 @@ function showEditPatientAlert(parentEl, data) {
   }
 }
 
-function deletePatient(patientID) {
+function deleteEmployee(patientID) {
   $('.alert').hide();
   $('#processModal').modal('toggle');
   doAjaxCall({PAGE: 'deletePatient', 'PATIENT_ID': patientID}, {callback: 'showDeletedPatientAlert', parentEl: '.modal-body', type: 'UI_UPDATE'}, 'POST');
