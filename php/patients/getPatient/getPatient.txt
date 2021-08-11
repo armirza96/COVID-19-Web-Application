@@ -19,5 +19,5 @@ SELECT
   CS.IDNumber
 FROM
   Patient P
-INNER JOIN CitizenshipStatus CS ON CS.patientID = P.ID
+LEFT JOIN CitizenshipStatus CS ON CS.patientID = P.ID
 WHERE ID = ?

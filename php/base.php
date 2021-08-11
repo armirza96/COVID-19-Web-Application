@@ -11,6 +11,15 @@ switch($pageToHit) {
   case "addPatient":
     require_once("patients/addPatient/addPatient.php");
   break;
+  case "updatePatient":
+    require_once("patients/updatePatient/updatePatient.php");
+  break;
+  case "addInfection":
+    require_once("patients/updatePatient/addInfection/addInfection.php");
+  break;
+  case "deleteInfection":
+    require_once("patients/updatePatient/deleteInfection/deleteInfection.php");
+  break;
   default:
   break;
 }

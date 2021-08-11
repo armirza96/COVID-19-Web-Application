@@ -1,4 +1,5 @@
 SELECT
+       PI.ID,
         V.name NAME,
         V.TYPE,
         PI.dateOfInfection DATE_OF_INFECTION,

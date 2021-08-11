@@ -1,5 +1,5 @@
 <?php
-function deleteData($path, $bindings) {
+function updateData($path, $bindings) {
   require 'connection.php';
 
   $myfile = fopen($path, "r") or die("Unable to open file!");
@@ -12,6 +12,7 @@ function deleteData($path, $bindings) {
   // prevents sql injection
    $stmt = $conn->prepare($sql);
   //
+
 
   $stmt->bind_param($bindings["BINDING_TYPES"], ...$bindings["VALUES"]);
 

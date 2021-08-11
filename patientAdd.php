@@ -136,7 +136,7 @@ $ageGroups = getData("php/ageGroups/getAgeGroups.txt");
 <?php
   require "shared/sidebar_end.php";
 
-  $jsToAddAfter[] = '<script src="js/patientAdd.js"></script>';;
+  $jsToAddAfter[] = '<script src="js/patient/patientAdd.js"></script>';;
 
   require 'shared/footer.php';
 ?>
