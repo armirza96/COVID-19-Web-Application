@@ -1,0 +1,8 @@
+SELECT
+  ID,
+  NAME,
+  TYPE,
+  dosesNeeded DOSES
+FROM
+  Vaccine
+WHERE ID = ?

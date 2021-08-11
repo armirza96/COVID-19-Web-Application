@@ -22,6 +22,7 @@ switch($pageToHit) {
   case "deleteInfection":
     require_once("patients/update/infection/delete/delete.php");
   break;
+  /////////////////////////////////////////////////////////////////////////// variants
   case "variants/get":
     require_once("variants/get/get.php");
   break;
@@ -33,6 +34,19 @@ switch($pageToHit) {
   break;
   case "variants/delete":
     require_once("variants/delete/delete.php");
+  break;
+ //////////////// VACCINES
+  case "vaccines/get":
+    require_once("vaccines/get/get.php");
+  break;
+  case "vaccines/update":
+    require_once("vaccines/update/update.php");
+  break;
+  case "vaccines/add":
+    require_once("vaccines/add/add.php");
+  break;
+  case "vaccines/delete":
+    require_once("vaccines/delete/delete.php");
   break;
   default:
     $data = ["RESULT" => "2", "MESSAGE" => "Command not added to base.php"];

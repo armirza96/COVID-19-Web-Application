@@ -6,20 +6,20 @@ require "shared/navbar2.php";
 require "shared/sidebar_begin.php";
 
 //get patient info
-$id = $_GET["VARIANT_ID"] ?? -1;
+$id = $_GET["ID"] ?? -1;
 
 require_once("php/getter.php");
 
-$data = getData("php/variants/get/getVariant.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$id]])[0];
+$data = getData("php/vaccines/get/getVaccine.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$id]])[0];
 
 ?>
 <br />
 <div style="display: flex; justify-content: space-between;">
 
   <h2 >
-  Edit Variant: <?="{$data['NAME']}";?>
+  Edit Vaccine: <?="{$data['NAME']}";?>
   </h2>
-  <button onclick="deleteVariant(<?=$id?>)" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Variant</button>
+  <button onclick="deleteVariant(<?=$id?>)" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Vaccine</button>
 
 </div>
 
@@ -31,7 +31,11 @@ $data = getData("php/variants/get/getVariant.txt", ["BINDING_TYPES" => "i", "VAL
     </div>
     <div class="form-group col-md-6">
       <label for="type">Type</label>
-      <input type="text" class="form-control" id="type" placeholder="Type: Alpha, Lambda, Delta" name="TYPE" value="<?=$data["TYPE"]?>">
+      <input type="text" class="form-control" id="type" placeholder="Type: mRNA, etc" name="TYPE" value="<?=$data["TYPE"]?>">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="type">Doses Needed</label>
+      <input type="number" class="form-control" id="doses" placeholder="1, 2, 3" name="DOSES" value="<?=$data["DOSES"]?>">
     </div>
   </div>
 
@@ -70,7 +74,7 @@ $data = getData("php/variants/get/getVariant.txt", ["BINDING_TYPES" => "i", "VAL
   function edit(id) {
         $(".alert").hide();
         $("#processModal").modal("toggle");
-        let dataToSend = {PAGE: "variants/update"};
+        let dataToSend = {PAGE: "vaccines/update"};
         $("form :input").each(function(){
             const name = $(this).attr("name");
             const value = $(this).val();
@@ -99,7 +103,7 @@ $data = getData("php/variants/get/getVariant.txt", ["BINDING_TYPES" => "i", "VAL
     function deleteVariant(id) {
       $(".alert").hide();
       $("#processModal").modal("toggle");
-      doAjaxCall({PAGE: "variants/delete", "ID": id}, {callback: "showDeletedAlert", parentEl: ".modal-body", type: "UI_UPDATE"}, "POST");
+      doAjaxCall({PAGE: "vaccines/delete", "ID": id}, {callback: "showDeletedAlert", parentEl: ".modal-body", type: "UI_UPDATE"}, "POST");
     }
 
     function showDeletedAlert(parentEl, data) {
@@ -108,7 +112,7 @@ $data = getData("php/variants/get/getVariant.txt", ["BINDING_TYPES" => "i", "VAL
         $(".alert-success").show();
         setTimeout(function(){
           //$("#processModal").modal("toggle");
-          window.location.href = `variants.php`;
+          window.location.href = `vaccines.php`;
         }, 3000);
 
       } else {

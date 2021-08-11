@@ -1,0 +1,4 @@
+INSERT INTO Vaccine
+  (name, Type, dosesNeeded)
+VALUES
+  (?, ?, ?);

@@ -5,14 +5,14 @@ $bindings["BINDING_TYPES"] = "i";
 $bindings["VALUES"] = array(
                                 $_POST["ID"]
                         );
-$result = deleteData("variants/delete/delete.txt", $bindings);
+$result = deleteData("vaccine/delete/delete.txt", $bindings);
 
 $data = [];
 
 if($result["RESULT"] === 1) {
-        $data = ["RESULT" => "1", "MESSAGE" => "Successfully Deleted Variant!"];
+        $data = ["RESULT" => "1", "MESSAGE" => "Successfully Deleted vaccine!!"];
 } else {
-        $data = ["RESULT" => "2", "MESSAGE" => "Unable to delete Variant."];
+        $data = ["RESULT" => "2", "MESSAGE" => "Unable to delete Vaccine."];
 }
 
 // returnData is used in base.php

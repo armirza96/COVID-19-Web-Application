@@ -1,0 +1,6 @@
+UPDATE Vaccine
+SET
+  NAME = ?,
+  TYPE = ?,
+  dosesNeeded = ?
+WHERE ID = ?
