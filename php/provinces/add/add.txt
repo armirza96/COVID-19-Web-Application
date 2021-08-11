@@ -1,0 +1,4 @@
+INSERT INTO Province
+  (name, code)
+VALUES
+  (?, ?);

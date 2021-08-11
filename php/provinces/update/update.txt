@@ -1,0 +1,5 @@
+UPDATE Province
+SET
+  NAME = ?,
+  CODE = ?
+WHERE ID = ?
