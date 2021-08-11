@@ -5,6 +5,11 @@ require "shared/navbar2.php";
 
 require "shared/sidebar_begin.php";
 
+require_once("php/getter.php");
+
+$vaccines = getData("php/vaccines/get/get.txt");
+$facilities = getData("php/facility/get/getFacilities.txt");
+
 ?>
 <br />
 <div style="display: flex; justify-content: space-between;">
@@ -18,26 +23,39 @@ require "shared/sidebar_begin.php";
 
 <form>
   <div class="form-row">
+
     <div class="form-group col-md-4">
-      <label for="VaccineID">Vaccine ID</label>
-      <input type="text" class="form-control" id="firstName" placeholder="Vaccine ID" name="VACCINE_ID">
+      <label for="vaccineID">Vaccine</label>
+
+        <select id="vaccineID" class="form-control" name="VACCINE_ID">
+          <?php foreach($vaccines as $v): ?>
+            <option value="<?=$v["ID"]?>"><?=$v["NAME"]?></option>
+          <?php endforeach; ?>
+        </select>
+
     </div>
-	
+
     <div class="form-group col-md-4">
       <label for="DOR">Date of Reception</label>
       <input type="date" class="form-control" id="DOR" placeholder="Date of Reception" name="DOR">
     </div>
-	
+
     <div class="form-group col-md-4">
       <label for="NumberOV">Number of Vaccines</label>
       <input type="number" class="form-control" id="NumberofVaccines" placeholder="Number of Vaccines" name="NOV">
     </div>
-	
-	<div class="form-group col-md-4">
-      <label for="FacilityID">Facility ID</label>
-      <input type="text" class="form-control" id="FacilityID" placeholder="Facility ID" name="FACILITY_ID">
+
+    <div class="form-group col-md-4">
+      <label for="facilityID">Facility</label>
+
+        <select id="facilityID" class="form-control" name="FACILITY_ID">
+          <?php foreach($facilities as $f): ?>
+            <option value="<?=$f["ID"]?>"><?=$f["NAME"]?></option>
+          <?php endforeach; ?>
+        </select>
+
     </div>
-	
+
   </div>
 
 </form>
@@ -71,7 +89,7 @@ require "shared/sidebar_begin.php";
 <?php
   require "shared/sidebar_end.php";
 
-  $jsToAddAfter[] = '<script src="js/patient/shipmentAdd.js"></script>';;
+  $jsToAddAfter[] = '<script src="js/patient/shipmentAdd.js"></script>';
 
   require 'shared/footer.php';
 ?>
