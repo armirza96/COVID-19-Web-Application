@@ -1,4 +1,4 @@
 <?php
 require_once("././getter.php");
 
-$data = getData("variants/get/get.txt");
+$data = getData("patients/get/getPatients.txt");

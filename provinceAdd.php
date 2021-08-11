@@ -4,7 +4,9 @@ require "shared/header.php";
 require "shared/navbar2.php";
 
 require "shared/sidebar_begin.php";
+require_once("php/getter.php");
 
+$ageGroups = getData("php/ageGroups/get/get.txt");
 ?>
 <br />
 <div style="display: flex; justify-content: space-between;">
@@ -25,7 +27,21 @@ require "shared/sidebar_begin.php";
       <input type="text" class="form-control" id="code" placeholder="Code" name="CODE">
     </div>
   </div>
+  <h3>Age Group</h3>
+    <div class="form-row">
 
+      <div class="form-group col-md-4">
+        <label for="ageGroup">What age group does this province belong to?</label>
+
+          <select id="ageGroup" class="form-control" name="AGE_GROUP">
+            <?php foreach($ageGroups as $group): ?>
+              <option value="<?=$group["ID"]?>"><?="{$group['lowerAgeBound']} - {$group['upperAgeBound']}"; ?></option>
+            <?php endforeach; ?>
+          </select>
+
+      </div>
+
+    </div>
 </form>
 <button class="btn btn-primary float-right" onclick="add();">Add province</button>
 

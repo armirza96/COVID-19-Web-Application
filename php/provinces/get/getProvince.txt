@@ -1,7 +1,8 @@
 SELECT
   ID,
   NAME,
-  CODE
+  CODE,
+  AgeGroupID
 FROM
   Province
 WHERE ID = ?

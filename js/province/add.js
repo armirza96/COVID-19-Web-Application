@@ -6,6 +6,7 @@ function add() {
         const value = $(this).val();
         dataToSend[name] = value;
     });
+      dataToSend['AGE_GROUP'] = $('#ageGroup').val();
     console.log(dataToSend);
     doAjaxCall(dataToSend, {callback: 'showAddedAlert', parentEl: 'body', type: 'UI_UPDATE'}, 'POST');
 }

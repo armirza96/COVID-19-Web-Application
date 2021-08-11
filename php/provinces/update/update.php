@@ -3,10 +3,11 @@ require_once("././updater.php");
 
 $id = $_POST["ID"];
 $bindings = [];
-$bindings["BINDING_TYPES"] = "ssi";
+$bindings["BINDING_TYPES"] = "ssii";
 $bindings["VALUES"] = array(
                                 $_POST["NAME"],
                                 $_POST["CODE"],
+                                $_POST["AGE_GROUP"],
                                 $id
                         );
 

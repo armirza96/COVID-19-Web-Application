@@ -1,0 +1,18 @@
+SELECT
+  firstName as FIRST_NAME,
+  lastName as LAST_NAME,
+  dateOfBirth as DOB,
+  email as EMAIL,
+  telephone as PHONE,
+  CITY,
+  dateGiven as DATE_GIVEN,
+  VCNE.type as VACCINE_TYPE,
+  (CASE WHEN EXISTS
+    (SELECT 1 FROM PatientInfection PI WHERE PI.patientID = P.ID)
+    THEN 'YES' ELSE 'NO'
+  END) as PREVIOUSLY_INFECTED
+FROM Patient P
+	INNER JOIN Vaccination VCN ON VCN.patientID = P.ID
+    INNER JOIN Vaccine VCNE ON VCNE.ID = VCN.vaccineID
+    INNER JOIN VaccinationDose VCD ON VCD.vaccinationID = VCN.ID
+WHERE P.ageGroupID IN (1,2,3)

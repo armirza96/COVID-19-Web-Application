@@ -1,5 +1,6 @@
 UPDATE Province
 SET
   NAME = ?,
-  CODE = ?
+  CODE = ?,
+  AgeGroupID = ?
 WHERE ID = ?

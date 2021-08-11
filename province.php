@@ -10,6 +10,8 @@ $id = $_GET["ID"] ?? -1;
 require_once("php/getter.php");
 
 $data = getData("php/provinces/get/getProvince.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$id]])[0];
+$ageGroups = getData("php/ageGroups/get/get.txt");
+
 ?>
 <br />
 <div style="display: flex; justify-content: space-between;">
@@ -33,7 +35,21 @@ $data = getData("php/provinces/get/getProvince.txt", ["BINDING_TYPES" => "i", "V
       <input type="text" class="form-control" id="code" placeholder="Code" name="CODE" value="<?=$data["CODE"]?>">
     </div>
   </div>
+  <h3>Age Group</h3>
+    <div class="form-row">
 
+      <div class="form-group col-md-4">
+        <label for="ageGroup">What age group do they belong to?</label>
+
+          <select id="ageGroup" class="form-control" name="AGE_GROUP">
+            <?php foreach($ageGroups as $group): ?>
+              <option value="<?=$group["ID"]?>" <?php echo ($data["AgeGroupID"] === $group["ID"] ? "selected" : "") ?>><?="{$group['lowerAgeBound']} - {$group['upperAgeBound']}"; ?></option>
+            <?php endforeach; ?>
+          </select>
+
+      </div>
+
+    </div>
 </form>
 <button class="btn btn-primary float-right" onclick="edit(<?=$id?>);">Save province</button>
 
@@ -75,6 +91,7 @@ $data = getData("php/provinces/get/getProvince.txt", ["BINDING_TYPES" => "i", "V
             const value = $(this).val();
             dataToSend[name] = value;
         });
+          dataToSend["AGE_GROUP"] = $("#ageGroup").val();
         dataToSend["ID"] = id;
         console.log(dataToSend);
         doAjaxCall(dataToSend, {callback: "showEditAlert", parentEl: ".modal-body", type: "UI_UPDATE"}, "POST");

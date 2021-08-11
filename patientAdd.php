@@ -6,7 +6,7 @@ require "shared/navbar2.php";
 require "shared/sidebar_begin.php";
 
 require_once("php/getter.php");
-$provinces = getData("php/province/get/get.txt");
+$provinces = getData("php/provinces/get/get.txt");
 $ageGroups = getData("php/ageGroups/get/get.txt");
 
 ?>

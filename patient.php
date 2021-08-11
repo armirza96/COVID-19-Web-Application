@@ -12,7 +12,7 @@ require_once("php/getter.php");
 
 $patient = getData("php/patients/get/getPatient.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$patientID]])[0];
 $infections = getData("php/patients/get/getPatientInfections.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$patientID]]);
-$provinces = getData("php/province/get/get.txt");
+$provinces = getData("php/provinces/get/get.txt");
 $ageGroups = getData("php/ageGroups/get/get.txt");
 $variants = getData("php/variants/get/get.txt");
 

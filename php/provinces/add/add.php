@@ -3,10 +3,11 @@ require_once("././inserter.php");
 
 $bindings = [];
 
-$bindings["BINDING_TYPES"] = "ss";
+$bindings["BINDING_TYPES"] = "ssi";
 $bindings["VALUES"] = array(
                                 $_POST["NAME"],
-                                $_POST["CODE"]
+                                $_POST["CODE"],
+                                $_POST["AGE_GROUP"]
                         );
 
 $result = insertData("provinces/add/add.txt", $bindings);
