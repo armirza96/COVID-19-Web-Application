@@ -7,7 +7,7 @@ require "shared/sidebar_begin.php";
 
 
 //get patient info
-$empID = $_GET["empID"] ?? -1;
+$empID = $_GET["EMPLOYEE_ID"] ?? -1;
 
 ?>
 <br />
@@ -16,7 +16,7 @@ $empID = $_GET["empID"] ?? -1;
     <h2 >
     Edit Employee
     </h2>
-    <a href="patient.php?PATIENT_ID=-1" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Employee</a>
+    <button onclick="deleteHealthcareWorker(<?=$id?>)" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Employee</button>
   <?php else : ?>
     <h2 >
     Add Employee
@@ -77,13 +77,13 @@ $empID = $_GET["empID"] ?? -1;
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary float-right">Save</button>
+  <button class="btn btn-primary float-right" onclick="edit(<?=$id?>);">Save</button>
 </form>
 <br />
 <br />
 
 
-<h3>Patient Infections</h3>
+<h3>Employment Record</h3>
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -106,21 +106,56 @@ $empID = $_GET["empID"] ?? -1;
   require "shared/sidebar_end.php";
 
   $jsToAddAfter[] = '<script>
+  function edit(id) {
+        $(".alert").hide();
+        $("#processModal").modal("toggle");
+        let dataToSend = {PAGE: "healthcareWorker/update"};
+        $("form :input").each(function(){
+            const name = $(this).attr("name");
+            const value = $(this).val();
+            dataToSend[name] = value;
+        });
+        dataToSend["ID"] = id;
+        console.log(dataToSend);
+        doAjaxCall(dataToSend, {callback: "showEditAlert", parentEl: ".modal-body", type: "UI_UPDATE"}, "POST");
+    }
 
-                  //doAjaxCall({}, addPatientsToUI);
-                  ajaxDone([{"VARIANT": "DELTA", "DATEOFINFECTION": "2021-03-04", "DATEOFCURE": "2021-03-18", "ID": 1}], {callback: "addInfectionsToUI", parentEl: "#tableBody"});
+    function showEditAlert(parentEl, data) {
+      if(data.RESULT == 1) {
+        $(".alert-success").text(data.MESSAGE + " Dismissing in 3 seconds");
+        $(".alert-success").show();
 
-                  function addInfectionsToUI(parentEl, data) {
-                    parentEl.append(`<tr>
-                        <th scope="row">${data.ID}</th>
-                        <th scope="row">${data.VARIANT}</th>
-                        <td>${data.DATEOFINFECTION}</td>
-                        <td>${data.DATEOFCURE}</td>
-                        <td><a href="patient.php" class="btn btn-sm btn-info">Save</a></td>
-                      </tr>`);
-                  }
+        setTimeout(function(){
+          $("#processModal").modal("toggle");
+        }, 3000);
 
-                </script>';
+      } else {
+        $(".alert-danger").text(data.MESSAGE);
+        $(".alert-danger").show()
+      }
+    }
+
+    function deleteHealthcareWorker(id) {
+      $(".alert").hide();
+      $("#processModal").modal("toggle");
+      doAjaxCall({PAGE: "healthcareWorker/delete", "ID": id}, {callback: "showDeletedAlert", parentEl: ".modal-body", type: "UI_UPDATE"}, "POST");
+    }
+
+    function showDeletedAlert(parentEl, data) {
+      if(data.RESULT == 1) {
+        $(".alert-success").text(data.MESSAGE+ " Dismissing in 3 seconds");
+        $(".alert-success").show();
+        setTimeout(function(){
+          //$("#processModal").modal("toggle");
+          window.location.href = `variants.php`;
+        }, 3000);
+
+      } else {
+        $(".alert-danger").text(data.MESSAGE);
+        $(".alert-danger").show();
+      }
+    }
+    </script>';
 
   require 'shared/footer.php';
 ?>
