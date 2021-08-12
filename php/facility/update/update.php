@@ -1,42 +1,31 @@
 <?php
 require_once("././updater.php");
 
-$patientID = $_POST["PATIENT_ID"];
+$facilityID = $_POST["FACILITY_ID"];
 $bindings = [];
-$bindings["BINDING_TYPES"] = "isssssssissi";
+$bindings["BINDING_TYPES"] = "issssssissi";
 $bindings["VALUES"] = array(
-                                $_POST["AGE_GROUP"],
-                                $_POST["FIRST_NAME"],
-                                $_POST["LAST_NAME"],
-                                $_POST["DOB"],
+                                $_POST["MANAGER_EMPLOYEE_RECORD_ID"],
+                                $_POST["NAME"],
                                 $_POST["PHONE"],
                                 $_POST["ADDRESS"],
+                                $_POST["PHONE"],
                                 $_POST["CITY"],
                                 $_POST["POSTAL_CODE"],
                                 $_POST["PROVINCE"],
-                                $_POST["EMAIL"],
-                                $_POST["MEDICARE"],
-                                $patientID
+                                $_POST["WEB_ADDRESS"],
+                                $_POST["TYPE"],
+                                $facilityID
                         );
 
-$result = updateData("patients/update/updatePatient.txt", $bindings);
-
-$bindings["BINDING_TYPES"] = "isi";
-$bindings["VALUES"] = array(
-                                $_POST["IS_CITIZEN"],
-                                $_POST["ID_NUMBER"],
-                                $patientID
-                        );
-
-$result = updateData("patients/update/updateCitizenshipStatus.txt", $bindings);
-
+$result = updateData("facility/update/updateFacility.txt", $bindings);
 
 $data = [];
 
 if($result["RESULT"] === 1) {
-        $data = ["RESULT" => "1", "MESSAGE" => "Successfully Updated!", "ID" => $patientID];
+        $data = ["RESULT" => "1", "MESSAGE" => "Successfully Updated!", "ID" => $facilityID];
 } else {
-        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to upate Patient."];
+        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to upate Facility."];
 }
 
 // returnData is used in base.php

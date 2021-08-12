@@ -3,39 +3,30 @@ require_once("././inserter.php");
 
 $bindings = [];
 
-$bindings["BINDING_TYPES"] = "isssssssiss";
+$bindings["BINDING_TYPES"] = "issssssiss";
 $bindings["VALUES"] = array(
-                                $_POST["AGE_GROUP"],
-                                $_POST["FIRST_NAME"],
-                                $_POST["LAST_NAME"],
-                                $_POST["DOB"],
+                                $_POST["MANAGER_EMPLOYEE_RECORD_ID"],
+                                $_POST["NAME"],
                                 $_POST["PHONE"],
                                 $_POST["ADDRESS"],
+                                $_POST["PHONE"],
                                 $_POST["CITY"],
                                 $_POST["POSTAL_CODE"],
                                 $_POST["PROVINCE"],
-                                $_POST["EMAIL"],
-                                $_POST["MEDICARE"]
+                                $_POST["WEB_ADDRESS"],
+                                $_POST["TYPE"]
                         );
 
-$result = insertData("patients/add/addPatient.txt", $bindings);
+$result = insertData("facility/add/addFacility.txt", $bindings);
 
-$patientID = $result["LAST_INSERTED_ID"];
-
-$bindings["BINDING_TYPES"] = "iis";
-$bindings["VALUES"] = array(    $patientID,
-                                $_POST["IS_CITIZEN"],
-                                $_POST["ID_NUMBER"],
-                        );
-$result = insertData("patients/add/addCitizenshipStatus.txt", $bindings);
-
+$facilityID = $result["LAST_INSERTED_ID"];
 
 $data = [];
 
 if($result["RESULT"] === 1) {
-        $data = ["RESULT" => "1", "MESSAGE" => "Successfully Added!", "ID" => $patientID];
+        $data = ["RESULT" => "1", "MESSAGE" => "Successfully Added!", "ID" => $facilityID];
 } else {
-        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to add Patient."];
+        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to add facility."];
 }
 
 // returnData is used in base.php
