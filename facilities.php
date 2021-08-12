@@ -43,10 +43,10 @@
                         <td>${data.name}</td>
                         <td>${data.address}</td>
                         <td>${data.city}</td>
-                        <td>${data.province}</td>
+                        <td>${data.provinceID}</td>
                         <td>${data.postal_code}</td>
                         <td>${data.telephone}</td>
-                        <td>${data.web_address}</td>
+                        <td>${data.webAddress}</td>
                         <td>${data.type}</td>
                         <td ><a href="facility.php?ID=${data.ID}" class="btn btn-sm btn-info">Edit</a></td>
                       </tr>`);
