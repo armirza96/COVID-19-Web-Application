@@ -10,6 +10,6 @@ SELECT
   provinceID,
   email,
   citizenship,
-  medicareNumber,
+  medicareNumber
 FROM
 Employee

@@ -27,7 +27,7 @@ switch($pageToHit) {
     require_once("healthcareWorker/get/get.php");
   break;
   case "healthcareWorker/delete":
-    require_once("helthcareWorker/delete/delete.php");
+    require_once("healthcareWorker/delete/delete.php");
   break;
   case "healthcareWorker/add":
     require_once("healthcareWorker/add/add.php");
@@ -35,11 +35,11 @@ switch($pageToHit) {
   case "healthcareWorker/update":
     require_once("healthcareWorker/update/update.php");
   break;
-  case "employmentRecord/add":
+  case "employee/record/add":
     require_once("healthcareWorker/update/employmentRecords/add/add.php");
   break;
-  case "employmentRecord/delete":
-    require_once("healthcaareWorker/update/employmentRecords/delete/delete.php");
+  case "employee/record/update":
+    require_once("healthcareWorker/update/employmentRecords/update/update.php");
   break;
   /////////////////////////////////////////////////////////////////////////// variants
   case "variants/get":

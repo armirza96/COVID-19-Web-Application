@@ -21,4 +21,3 @@ if($result["RESULT"] === 1) {
 }
 
 // returnData is used in base.php
-// continues in delete.php

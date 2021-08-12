@@ -16,7 +16,7 @@ function showAddedAlert(parentEl, data) {
     $('.alert-success').show();
 
     setTimeout(function(){
-      window.location.href = `variant.php?VARIANT_ID=${data.ID}`;
+      window.location.href = `healthcareWorker.php?ID=${data.ID}`;
     }, 3000);
   } else {
     $('.alert-danger').text(data.MESSAGE);

@@ -21,7 +21,7 @@ function updateData($path, $bindings) {
   if($result) {
     $data = array("RESULT"=> 1);
   } else {
-     $data = array("RESULT"=> 2);
+     $data = array("RESULT"=> 2, "MESSAGE" => $conn->error);
   }
 
   $conn->close();

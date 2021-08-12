@@ -13,7 +13,7 @@ $provinces = getData("php/provinces/get/get.txt");
 <div style="display: flex; justify-content: space-between;">
 
     <h2 >
-    Add Patient
+    Add Employee
     </h2>
 
 
@@ -77,22 +77,11 @@ $provinces = getData("php/provinces/get/get.txt");
     </div>
   </div>
 
-  <h3>Citizenship status</h3>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="IDNumber">ID Number</label>
-        <input type="text" class="form-control" id="IDNumber" placeholder="SSN # or passport #" name="ID_NUMBER">
+        <input type="text" class="form-control" id="IDNumber" placeholder="citizen # or passport #" name="ID_NUMBER">
       </div>
-
-      <div class="form-group col-md-4">
-        <label for="inputCitizen">Is a Ctizen of Canada?</label>
-        <select id="inputCitizen" class="form-control" name="IS_CITIZEN">
-          <?php foreach(array("NO"=> 0, "YES"=> 1) as $key=>$value): ?>
-            <option value="<?=$value ?>"><?=$key ?></option>
-          <?php endforeach; ?>
-        </select>
-      </div>
-
     </div>
 
 
@@ -103,7 +92,7 @@ $provinces = getData("php/provinces/get/get.txt");
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Adding Employee</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

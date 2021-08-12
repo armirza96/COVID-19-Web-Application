@@ -2,15 +2,16 @@ SELECT
   ID,
   firstName as FIRST_NAME,
   lastName as LAST_NAME,
-  dateOfBirth,
-  telephone,
-  address,
-  city,
-  postal_code,
+  SSN,
+  dateOfBirth DOB,
+  telephone PHONE,
+  address ADDRESS,
+  city CITY,
+  postal_code POSTAL_CODE,
   provinceID,
-  email,
-  medicareNumber,
-  citizenship
+  email EMAIL,
+  medicareNumber MEDICARE,
+  citizenship CITIZEN
 FROM
-  Employee P
+  Employee 
 WHERE ID = ?

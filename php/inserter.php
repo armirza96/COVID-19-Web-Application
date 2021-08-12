@@ -21,7 +21,7 @@ function insertData($path, $bindings) {
   if($result) {
     $data = array("RESULT"=> 1, "LAST_INSERTED_ID" => $conn->insert_id);
   } else {
-     $data = array("RESULT"=> 2);
+     $data = array("RESULT"=> 2,  "MESSAGE" => $conn->error);
   }
 
   $conn->close();

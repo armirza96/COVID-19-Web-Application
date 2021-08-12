@@ -1,4 +1,4 @@
 INSERT INTO EmploymentRecord
-(employeeID, facilityID, startDate, endDate, numberOfVaccinesRecieved)
+(employeeID, facilityID, startDate)
 VALUES
-  (?, ?, ?, ?, ?);
+  (?, ?, ?);

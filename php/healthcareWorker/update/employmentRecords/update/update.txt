@@ -1,0 +1,5 @@
+UPDATE EmploymentRecord
+SET
+  endDate = ?
+WHERE
+  employeeID = ? AND endDate IS NULL
