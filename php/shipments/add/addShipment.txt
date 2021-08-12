@@ -1,0 +1,4 @@
+INSERT INTO Shipment
+  (vaccineID, facilityID, dateOfReception, numberOfVaccinesRecieved)
+VALUES
+  (?, ?, ?, ?);

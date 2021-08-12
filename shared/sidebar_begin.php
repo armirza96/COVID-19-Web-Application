@@ -36,7 +36,7 @@
         <a href="Transfer.php" class="height_100 padding_0" aria-selected="true">Transfer</a>
       </li>
       <li class="height_100 w-100">
-        <a href="Perform.php" class="height_100 padding_0" aria-selected="true">Perform</a>
+        <a href="Perform.php" class="height_100 padding_0" aria-selected="true">Perform Vaccination</a>
       </li>
     </ul>
     <hr />

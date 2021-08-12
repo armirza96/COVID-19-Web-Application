@@ -50,7 +50,7 @@ $facilities = getData("php/facility/get/getFacilities.txt");
 
         <select id="facilityID" class="form-control" name="FACILITY_ID">
           <?php foreach($facilities as $f): ?>
-            <option value="<?=$f["ID"]?>"><?=$f["NAME"]?></option>
+            <option value="<?=$f["ID"]?>"><?=$f["name"]?></option>
           <?php endforeach; ?>
         </select>
 
@@ -60,13 +60,13 @@ $facilities = getData("php/facility/get/getFacilities.txt");
 
 </form>
 
-<button class="btn btn-primary float-right" onclick="addShipment();">Add</button>
+<button class="btn btn-primary float-right" onclick="add();">Add</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Shipment</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Adding Shipment</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -89,7 +89,7 @@ $facilities = getData("php/facility/get/getFacilities.txt");
 <?php
   require "shared/sidebar_end.php";
 
-  $jsToAddAfter[] = '<script src="js/shipment/shipmentAdd.js"></script>';
+  $jsToAddAfter[] = '<script src="js/shipment/add.js"></script>';
 
   require 'shared/footer.php';
 ?>

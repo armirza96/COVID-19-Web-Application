@@ -7,7 +7,7 @@ require "shared/sidebar_begin.php";
 
 require_once("php/getter.php");
 
-$patients = getData("php/patients/get/getPatient.txt");
+$patients = getData("php/patients/get/getPatients.txt");
 $vaccines = getData("php/vaccines/get/get.txt");
 $facilities = getData("php/facility/get/getFacilities.txt");
 $healthcareWorker = getData("php/healthcareWorker/get/getHealthcareWorkerEmploymentRecords.txt");
@@ -17,7 +17,7 @@ $healthcareWorker = getData("php/healthcareWorker/get/getHealthcareWorkerEmploym
 <div style="display: flex; justify-content: space-between;">
 
     <h2 >
-    Perform 
+    Perform
     </h2>
 
 
@@ -35,7 +35,7 @@ $healthcareWorker = getData("php/healthcareWorker/get/getHealthcareWorkerEmploym
         </select>
 
     </div>
-	
+
 	<div class="form-group col-md-4">
       <label for="vaccineID">Vaccine</label>
 
@@ -46,7 +46,7 @@ $healthcareWorker = getData("php/healthcareWorker/get/getHealthcareWorkerEmploym
         </select>
 
     </div>
-	
+
 	<div class="form-group col-md-4">
       <label for="facilityID">Facility</label>
 
@@ -57,7 +57,7 @@ $healthcareWorker = getData("php/healthcareWorker/get/getHealthcareWorkerEmploym
         </select>
 
     </div>
-	
+
 	<div class="form-group col-md-4">
       <label for="employeeRecordID">Employee Record ID</label>
 
@@ -68,7 +68,7 @@ $healthcareWorker = getData("php/healthcareWorker/get/getHealthcareWorkerEmploym
         </select>
 
     </div>
-	
+
   </div>
 
 </form>

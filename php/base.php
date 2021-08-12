@@ -112,6 +112,10 @@ switch($pageToHit) {
     case "facility/delete":
       require_once("facility/delete/delete.php");
     break;
+    /////////////////////////////////////////////////////////////////////////// Facilities
+    case "shipments/add":
+      require_once("shipments/add/add.php");
+    break;
   default:
     $data = ["RESULT" => "2", "MESSAGE" => "Command not added to base.php"];
   break;
