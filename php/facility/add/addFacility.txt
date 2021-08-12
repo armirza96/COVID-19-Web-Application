@@ -1,4 +1,4 @@
-INSERT INTO Patient
+INSERT INTO Facility
   (managerEmployeeRecordID,
   name,
   telephone,

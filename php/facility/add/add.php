@@ -3,13 +3,12 @@ require_once("././inserter.php");
 
 $bindings = [];
 
-$bindings["BINDING_TYPES"] = "issssssiss";
+$bindings["BINDING_TYPES"] = "isssssiss";
 $bindings["VALUES"] = array(
-                                $_POST["MANAGER_EMPLOYEE_RECORD_ID"],
+                                $_POST["MANAGERS_EMPLOYEE_RECORD_ID"],
                                 $_POST["NAME"],
                                 $_POST["PHONE"],
                                 $_POST["ADDRESS"],
-                                $_POST["PHONE"],
                                 $_POST["CITY"],
                                 $_POST["POSTAL_CODE"],
                                 $_POST["PROVINCE"],

@@ -1,5 +1,12 @@
 SELECT
   ID,
-  NAME
+  managerEmployeeRecordID,
+  name,
+  telephone,
+  address,
+  city,
+  postal_code,
+  webAddress,
+  type
 FROM
-Facility
+  Facility

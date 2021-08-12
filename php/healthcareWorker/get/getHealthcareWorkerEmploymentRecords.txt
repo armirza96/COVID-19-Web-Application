@@ -1,9 +1,10 @@
 SELECT
   F.NAME,
   ER.startDate START_DATE,
-  ER.endDate END_DATE
+  ER.endDate END_DATE,
+  ER.ID,
+  E.firstName
 FROM
   Employee E
   INNER JOIN EmploymentRecord ER ON ER.employeeID = E.ID
   INNER JOIN Facility F on F.ID = ER.facilityID
-WHERE E.ID = ?

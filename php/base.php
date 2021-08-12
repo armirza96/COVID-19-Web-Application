@@ -100,16 +100,16 @@ switch($pageToHit) {
       require_once("ageGroups/delete/delete.php");
     break;
     /////////////////////////////////////////////////////////////////////////// Facilities
-    case "facilities/get":
+    case "facility/get":
       require_once("facility/get/get.php");
     break;
-    case "facilities/update":
+    case "facility/update":
       require_once("facility/update/update.php");
     break;
-    case "facilities/add":
+    case "facility/add":
       require_once("facility/add/add.php");
     break;
-    case "facilities/delete":
+    case "facility/delete":
       require_once("facility/delete/delete.php");
     break;
   default:
