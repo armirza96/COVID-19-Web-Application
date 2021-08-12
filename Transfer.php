@@ -8,6 +8,7 @@ require "shared/sidebar_begin.php";
 require_once("php/getter.php");
 
 $facilities = getData("php/facility/get/getFacilities.txt");
+$vaccines = getData("php/vaccines/get/get.txt");
 
 ?>
 <br />
@@ -27,7 +28,7 @@ $facilities = getData("php/facility/get/getFacilities.txt");
 
         <select id="facilityID" class="form-control" name="FROM_FACILITY_ID">
           <?php foreach($facilities as $f): ?>
-            <option value="<?=$f["ID"]?>"><?=$f["NAME"]?></option>
+            <option value="<?=$f["ID"]?>"><?=$f["name"]?></option>
           <?php endforeach; ?>
         </select>
 
@@ -38,7 +39,7 @@ $facilities = getData("php/facility/get/getFacilities.txt");
 
         <select id="facilityID" class="form-control" name="TO_FACILITY_ID">
           <?php foreach($facilities as $f): ?>
-            <option value="<?=$f["ID"]?>"><?=$f["NAME"]?></option>
+            <option value="<?=$f["ID"]?>"><?=$f["name"]?></option>
           <?php endforeach; ?>
         </select>
 
@@ -52,6 +53,17 @@ $facilities = getData("php/facility/get/getFacilities.txt");
     <div class="form-group col-md-4">
       <label for="NumberOVT">Number of Vaccines Transfered</label>
       <input type="number" class="form-control" id="NumberofVaccinesTransfered" placeholder="Number of Vaccines Transfered" name="NOVT">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="vaccineID">Vaccine</label>
+
+        <select id="vaccineID" class="form-control" name="VACCINE_ID">
+          <?php foreach($vaccines as $v): ?>
+            <option value="<?=$v["ID"]?>"><?=$v["NAME"]?></option>
+          <?php endforeach; ?>
+        </select>
+
     </div>
 	
   </div>

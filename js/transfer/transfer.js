@@ -1,4 +1,4 @@
-function add() {
+function transfer() {
     $('.modal').modal('toggle')
     let dataToSend = {PAGE: 'transfer/add'};
     $('form :input').each(function(){

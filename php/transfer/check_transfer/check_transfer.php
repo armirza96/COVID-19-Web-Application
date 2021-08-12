@@ -7,23 +7,28 @@ require_once("././updater.php");
 $vaccinesInInventory;
 $vaccineID = $_POST["VACCINE_ID"];
 $from_facilityID = $_POST["FROM_FACILITY_ID"];
-$to_facilityID = $_POST["TO_FACILITY_ID"]
+$to_facilityID = $_POST["TO_FACILITY_ID"];
 $totalVaccinesTransferred = $_POST["NOVT"];
 
-// SET BINDINGS FOR GETTING INVENTORY
+// SET BINDINGS FOR FROM INVENTORY
 $bindings = [];
 $bindings["BINDING_TYPES"] = "ii";
 $bindings["VALUES"] = array(
                         $from_facilityID,
                         $vaccineID
                         );
+$fromInventory = getData("transfer/check_transfer/getInventory.txt", $bindings);
 
-// GET BOTH INVENTORIES
-$fromInventory = getData("getInventory.txt", $bindings);
-$toInventory = getData("getInventory.txt", $bindings);
+// SET BINDINGS FOR TO INVENTORY
+$bindings["VALUES"] = array(
+        $to_facilityID,
+        $vaccineID
+        );
+
+$toInventory = getData("transfer/check_transfer/getInventory.txt", $bindings);
 
 // CHECK IF FROM INVENTORY HAS SUFFICIENT VACCINES
-if($fromInventory["NOVA"] < $totalVaccinesTransferred || $fromInventory["NOVA"] == null){
+if($fromInventory['NOVA'] < $totalVaccinesTransferred || $fromInventory['NOVA'] == null){
         $result["RESULT"] = 2;
 }else{
 
@@ -37,34 +42,36 @@ if($fromInventory["NOVA"] < $totalVaccinesTransferred || $fromInventory["NOVA"] 
                 $totalVaccinesTransferred
               );
 
-        $result = insertData("./add/addTransfer", $bindings);
+        $result = insertData("transfer/add/addTransfer.txt", $bindings);
 
         // ADD OR UPDATE TO INVENTORY
         $bindings["BINDING_TYPES"] = "iii";
-        if($toInventory["NOVA"] == null){
+        if($toInventory['NOVA'] == null){
                 $bindings["VALUES"] = array(
                         $vaccineID,
                         $to_facilityID,
                         $totalVaccinesTransferred
                         );
-                $result = insertData("./add/addInventory");
+                $result = insertData("transfer/add/addInventory.txt");
         }else{
+                $vaccineTotal = $toInventory['NOVA'] + $totalVaccinesTransferred;
                 $bindings["VALUES"] = array(
-                        $toInventory["NOVA"] + $totalVaccinesTransferred,
+                        $vaccineTotal,
                         $to_facilityID,
                         $vaccineID
                 );
-                $result = updateData("./update/updateInventory.txt", $bindings);
+                $result = updateData("transfer/update/updateInventory.txt", $bindings);
         }
 
         // UPDATE FROM INVENTORY
-        $bindings["VALUES"] = {
-                $fromInventory["NOVA"] - $totalVaccinesTransferred,
+        $vaccineTotal = $fromInventory['NOVA'] - $totalVaccinesTransferred;
+        $bindings["VALUES"] = array(
+                $vaccineTotal,
                 $from_facilityID,
                 $vaccineID
-        };
+                );
 
-        $result = updateData("./update/updateInventory.txt", $bindings);
+        $result = updateData("transfer/update/updateInventory.txt", $bindings);
 }
 
 $data = [];
