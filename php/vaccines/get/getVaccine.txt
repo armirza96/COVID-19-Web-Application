@@ -2,7 +2,15 @@ SELECT
   ID,
   NAME,
   TYPE,
-  dosesNeeded DOSES
+  dosesNeeded DOSES,
+  MAX_APPROVAL_DATE,
+  (CASE WHEN Max(VS2.dateOfSuspension) IS NOT NULL
+    THEN 'SUSPENDED' ELSE 'SAFE'
+  END) as STATUS
 FROM
-  Vaccine
-WHERE ID = ?
+  Vaccine V
+  LEFT JOIN
+    (SELECT vaccineID, MAX(dateOfApproval) MAX_APPROVAL_DATE FROM VaccineStatus GROUP BY vaccineID) VS ON VS.vaccineID = V.ID
+INNER JOIN VaccineStatus VS2 ON VS2.dateOfApproval = MAX_APPROVAL_DATE
+WHERE
+  V.ID = ?

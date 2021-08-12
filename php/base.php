@@ -48,6 +48,12 @@ switch($pageToHit) {
   case "vaccines/delete":
     require_once("vaccines/delete/delete.php");
   break;
+  case "vaccines/status/add":
+    require_once("vaccines/update/status/add/add.php");
+  break;
+  case "vaccines/status/update":
+    require_once("vaccines/update/status/update/update.php");
+  break;
   ///////////////////////////////////////////////////////////////////////////// Provinces
    case "provinces/get":
      require_once("provinces/get/get.php");

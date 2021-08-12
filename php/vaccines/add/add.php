@@ -14,6 +14,11 @@ $result = insertData("vaccines/add/add.txt", $bindings);
 
 $id = $result["LAST_INSERTED_ID"];
 
+$bindings["BINDING_TYPES"] = "i";
+$bindings["VALUES"] = array(    $id
+                        );
+
+$result = insertData("vaccines/add/addVaccineStatus.txt", $bindings);
 
 $data = [];
 

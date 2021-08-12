@@ -1,0 +1,7 @@
+SELECT
+  dateOfApproval DATE_OF_APPROVAL,
+  dateOfSuspension DATE_OF_SUSPENSION
+FROM
+  VaccineStatus
+WHERE
+  vaccineID = ?

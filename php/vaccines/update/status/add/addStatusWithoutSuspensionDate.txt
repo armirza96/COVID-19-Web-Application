@@ -1,0 +1,4 @@
+INSERT INTO VaccineStatus
+(vaccineID, dateOfApproval)
+VALUES
+  (?, ?);

@@ -1,0 +1,5 @@
+UPDATE VaccineStatus
+SET
+  dateOfSuspension = ?
+WHERE
+  vaccineID = ? AND dateOfSuspension IS NULL
