@@ -34,8 +34,8 @@
                   function addDataToUI(parentEl, data) {
                     parentEl.append(`<tr>
                         <th scope="row">${data.ID}</th>
-                        <td>${data.NAME}</td>
-                        <td>${data.CODE}</td>
+                        <td>${data.FIRST_NAME}</td>
+                        <td>${data.LAST_NAME}</td>
                         <td ><a href="healthcareWorker.php?ID=${data.ID}" class="btn btn-sm btn-info">Edit</a></td>
                       </tr>`);
                   }
