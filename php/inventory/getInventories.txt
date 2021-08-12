@@ -1,0 +1,4 @@
+SELECT
+SUM(numberOfVaccinesAvailable)
+FROM Inventory
+GROUP BY facilityID

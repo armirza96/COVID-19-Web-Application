@@ -4,6 +4,7 @@
   require "shared/navbar2.php";
 
   require "shared/sidebar_begin.php";
+
 ?>
 <br />
 <h2 class="float-left">Facilities</h2>
@@ -21,6 +22,7 @@
       <th scope="col">Phone Number</th>
       <th scope="col">Web Address</th>
       <th scope="col">Type</th>
+      <th scope="col">Number of Vaccines Available</th>
       <th scope="col" class="w-10">&nbsp</th>
     </tr>
   </thead>
@@ -48,6 +50,7 @@
                         <td>${data.telephone}</td>
                         <td>${data.webAddress}</td>
                         <td>${data.type}</td>
+                        <td>${data.inventory ?? 0}</td>
                         <td ><a href="facility.php?ID=${data.ID}" class="btn btn-sm btn-info">Edit</a></td>
                       </tr>`);
                   }

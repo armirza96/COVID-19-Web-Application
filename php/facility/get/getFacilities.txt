@@ -8,6 +8,9 @@ SELECT
   provinceID,
   postal_code,
   webAddress,
-  type
-FROM
-  Facility
+  type,
+  inventory
+FROM Facility f left join
+(SELECT sum(numberOfVaccinesAvailable) AS inventory, facilityID
+FROM Inventory GROUP BY facilityID) i on
+f.ID = i.facilityID;
