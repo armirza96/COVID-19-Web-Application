@@ -39,7 +39,7 @@ switch($pageToHit) {
     require_once("healthcareWorker/update/employmentRecords/add/add.php");
   break;
   case "employmentRecord/delete":
-    require_once("healthcaareWorker/update/employmentRecords/delete/delete.php");
+    require_once("healthcareWorker/update/employmentRecords/delete/delete.php");
   break;
   /////////////////////////////////////////////////////////////////////////// variants
   case "variants/get":
@@ -98,6 +98,19 @@ switch($pageToHit) {
     break;
     case "ageGroups/delete":
       require_once("ageGroups/delete/delete.php");
+    break;
+    /////////////////////////////////////////////////////////////////////////// Facilities
+    case "facilities/get":
+      require_once("facility/get/get.php");
+    break;
+    case "facilities/update":
+      require_once("facility/update/update.php");
+    break;
+    case "facilities/add":
+      require_once("facility/add/add.php");
+    break;
+    case "facilities/delete":
+      require_once("facility/delete/delete.php");
     break;
   default:
     $data = ["RESULT" => "2", "MESSAGE" => "Command not added to base.php"];

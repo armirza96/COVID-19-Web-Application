@@ -1,23 +1,13 @@
 SELECT
   ID,
-  AgeGroupID,
-  firstName as FIRST_NAME,
-  lastName as LAST_NAME,
-  dateOfBirth,
+  managerEmployeeRecordID,
+  name,
   telephone,
   address,
   city,
   postal_code,
-  provinceID,
-  email,
-  medicareNumber,
-  CASE WHEN CS.isCitizen = 1 THEN
-	'YES'
-  ELSE
-	'NO'
-  END IS_CITIZEN,
-  CS.IDNumber
+  webAddress,
+  type
 FROM
-  Patient P
-LEFT JOIN CitizenshipStatus CS ON CS.patientID = P.ID
+  Facility
 WHERE ID = ?

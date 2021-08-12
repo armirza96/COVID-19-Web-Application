@@ -1,0 +1,12 @@
+INSERT INTO Patient
+  (managerEmployeeRecordID,
+  name,
+  telephone,
+  address,
+  city,
+  postal_code,
+  provinceID,
+  webAddress,
+  type)
+VALUES
+  (?, ?, ?, ?, ?, ?, ?, ?, ?);

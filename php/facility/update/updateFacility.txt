@@ -1,14 +1,12 @@
 UPDATE Patient
 SET
-  AgeGroupID = ?,
-  firstName = ?,
-  lastName  = ?,
-  dateOfBirth = ?,
+  managerEmployeeRecordID = ?,
+  name = ?,
   telephone = ?,
   address = ?,
   city = ?,
   postal_code = ?,
   provinceID = ?,
-  email = ?,
-  medicareNumber = ?
+  webAddress = ?,
+  type = ?
 WHERE ID = ?
