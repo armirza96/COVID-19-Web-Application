@@ -6,6 +6,7 @@ SELECT
   address,
   city,
   postal_code,
+  provinceID,
   webAddress,
   type
 FROM

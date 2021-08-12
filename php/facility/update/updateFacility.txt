@@ -1,4 +1,4 @@
-UPDATE Patient
+UPDATE Facility
 SET
   managerEmployeeRecordID = ?,
   name = ?,

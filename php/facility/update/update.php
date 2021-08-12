@@ -1,15 +1,14 @@
 <?php
 require_once("././updater.php");
 
-$facilityID = $_POST["FACILITY_ID"];
+$facilityID = $_POST["ID"];
 $bindings = [];
-$bindings["BINDING_TYPES"] = "issssssissi";
+$bindings["BINDING_TYPES"] = "isssssissi";
 $bindings["VALUES"] = array(
-                                $_POST["MANAGER_EMPLOYEE_RECORD_ID"],
+                                $_POST["MANAGERS_EMPLOYEE_RECORD_ID"],
                                 $_POST["NAME"],
                                 $_POST["PHONE"],
                                 $_POST["ADDRESS"],
-                                $_POST["PHONE"],
                                 $_POST["CITY"],
                                 $_POST["POSTAL_CODE"],
                                 $_POST["PROVINCE"],
@@ -25,7 +24,7 @@ $data = [];
 if($result["RESULT"] === 1) {
         $data = ["RESULT" => "1", "MESSAGE" => "Successfully Updated!", "ID" => $facilityID];
 } else {
-        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to upate Facility."];
+        $data = ["RESULT" => $result["RESULT"], "MESSAGE" => "Unable to update Facility."];
 }
 
 // returnData is used in base.php

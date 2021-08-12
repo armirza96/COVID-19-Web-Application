@@ -70,7 +70,7 @@ $managers = getData("php/healthcareWorker/get/getHealthcareWorkerEmploymentRecor
     </div>
     <div class="form-group col-md-4">
       <label for="inputState">Province</label>
-      <select id="inputState" class="form-control" name="PROVINCE" value="<?=$data["province"]?>">
+      <select id="inputState" class="form-control" name="PROVINCE" value="<?=$data["provinceID"]?>">
 
         <?php foreach($provinces as $pr): ?>
           <option value="<?=$pr["ID"]?>"><?=$pr["NAME"]?></option>
