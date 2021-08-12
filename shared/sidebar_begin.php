@@ -48,9 +48,6 @@
       <li class="height_100 w-100">
         <a href="FAQ.php" class="height_100 padding_0" aria-selected="true" target="_blank"> Database Documentation (For TA)</a>
       </li>
-      <li class="height_100 w-100">
-        <a href="support.php" class="height_100 padding_0" aria-selected="true" target="_blank">Website Documentation (For TA)</a>
-      </li>
     </ul>
 </nav>
 <!-- Page Content -->
