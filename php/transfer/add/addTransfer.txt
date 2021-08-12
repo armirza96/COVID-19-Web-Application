@@ -1,0 +1,4 @@
+INSERT INTO Transfer
+  (fromFacilityID, toFacilityID, vaccineID, dateOfTransfer, numberOfVaccinesTransfered)
+VALUES
+  (?, ?, ?, ?, ?);

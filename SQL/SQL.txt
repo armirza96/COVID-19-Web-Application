@@ -134,9 +134,11 @@ FOREIGN KEY (employeeRecordID) REFERENCES EmploymentRecord(ID) ON DELETE CASCADE
 CREATE TABLE Shipment(
 ID INT AUTO_INCREMENT PRIMARY KEY,
 vaccineID INT NOT NULL,
+facilityID INT NOT NULL,
 dateOfReception DATE NOT NULL,
 numberOfVaccinesRecieved INT NOT NULL,
 FOREIGN KEY (vaccineID) REFERENCES Vaccine(ID)
+FOREIGN KEY (facilityID) REFERENCES Facility(ID)
 );
 
 CREATE TABLE EmploymentRecord(
@@ -168,9 +170,10 @@ FOREIGN KEY (shipmentID) REFERENCES Shipment(ID)
 CREATE TABLE Transfer(
 fromFacilityID INT NOT NULL,
 toFacilityID INT NOT NULL,
+vaccineID INT NOT NULL,
 dateOfTransfer DATETIME DEFAULT NOW(),
 numberOfVaccinesTransfered INT NOT NULL,
 FOREIGN KEY (fromFacilityID) REFERENCES Facility(ID),
-FOREIGN KEY (toFacilityID) REFERENCES Facility(ID)
-
+FOREIGN KEY (toFacilityID) REFERENCES Facility(ID),
+FOREIGN KEY (vaccineID) REFERENCES Vaccine(ID)
 ) ;

@@ -25,7 +25,7 @@ $facilities = getData("php/facility/get/getFacilities.txt");
     <div class="form-group col-md-4">
       <label for="facilityID">From Facility</label>
 
-        <select id="facilityID" class="form-control" name="FACILITY_ID">
+        <select id="facilityID" class="form-control" name="FROM_FACILITY_ID">
           <?php foreach($facilities as $f): ?>
             <option value="<?=$f["ID"]?>"><?=$f["NAME"]?></option>
           <?php endforeach; ?>
@@ -36,7 +36,7 @@ $facilities = getData("php/facility/get/getFacilities.txt");
 	<div class="form-group col-md-4">
       <label for="facilityID">To Facility</label>
 
-        <select id="facilityID" class="form-control" name="FACILITY_ID">
+        <select id="facilityID" class="form-control" name="TO_FACILITY_ID">
           <?php foreach($facilities as $f): ?>
             <option value="<?=$f["ID"]?>"><?=$f["NAME"]?></option>
           <?php endforeach; ?>
@@ -87,7 +87,7 @@ $facilities = getData("php/facility/get/getFacilities.txt");
 <?php
   require "shared/sidebar_end.php";
 
-  $jsToAddAfter[] = '<script src="js/vaccine/transfer.js"></script>';;
+  $jsToAddAfter[] = '<script src="js/transfer/transfer.js"></script>';;
 
   require 'shared/footer.php';
 ?>

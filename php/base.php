@@ -112,9 +112,13 @@ switch($pageToHit) {
     case "facility/delete":
       require_once("facility/delete/delete.php");
     break;
-    /////////////////////////////////////////////////////////////////////////// Facilities
+    /////////////////////////////////////////////////////////////////////////// Shipments
     case "shipments/add":
       require_once("shipments/add/add.php");
+    break;
+    ////////////////////////////////////////////////////////////////////////// Transfer
+    case "transfer/add":
+      require_once("transfer/check_transfer/check_transfer.php");
     break;
   default:
     $data = ["RESULT" => "2", "MESSAGE" => "Command not added to base.php"];
