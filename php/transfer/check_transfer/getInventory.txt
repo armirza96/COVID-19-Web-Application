@@ -1,5 +1,5 @@
 SELECT
-facilityID AS ID,
-numberOfVaccinesAvailable as NOVA
+facilityID as 'ID',
+numberOfVaccinesAvailable as 'NOVA'
 FROM Inventory
-WHERE facilityID = ? AND vaccineID = ?
+WHERE facilityID = ? AND vaccineID = ?;
