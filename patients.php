@@ -15,6 +15,7 @@
       <th scope="col">#</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
+      <th scope="col">Was Previously Infected?</th>
       <th scope="col" class="w-10">&nbsp</th>
     </tr>
   </thead>
@@ -37,6 +38,7 @@
                         <th scope="row">${data.ID}</th>
                         <td>${data.FIRST_NAME}</td>
                         <td>${data.LAST_NAME}</td>
+                        <td>${(data.wasInfected) ? "Yes" : "No"}</td>
                         <td ><a href="patient.php?PATIENT_ID=${data.ID}" class="btn btn-sm btn-info">Edit</a></td>
                       </tr>`);
                   }

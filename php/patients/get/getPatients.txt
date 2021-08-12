@@ -1,5 +1,5 @@
 SELECT
-  ID,
+  p.ID,
   AgeGroupID,
   firstName FIRST_NAME,
   lastName LAST_NAME,
@@ -10,6 +10,8 @@ SELECT
   postal_code,
   provinceID,
   email,
-  medicareNumber
+  medicareNumber,
+  pi2.ID as wasInfected
 FROM
-Patient
+Patient p left join PatientInfection pi2 on
+p.ID = pi2.patientID
