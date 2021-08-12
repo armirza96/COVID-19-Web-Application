@@ -11,7 +11,7 @@ SELECT
   provinceID,
   email,
   medicareNumber,
-  pi2.ID as wasInfected
+  pi2.patientID as wasInfected
 FROM
-Patient p left join PatientInfection pi2 on
+Patient p left join (SELECT DISTINCT patientID FROM PatientInfection) pi2 on
 p.ID = pi2.patientID
