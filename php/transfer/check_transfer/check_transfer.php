@@ -17,15 +17,19 @@ $bindings["VALUES"] = array(
                         $from_facilityID,
                         $vaccineID
                         );
-$fromInventory = getData("transfer/check_transfer/getInventory.txt", $bindings);
+                        
+$fromInventory = getData("transfer/check_transfer/getInventory.txt", $bindings)[0];
 
+print_r($fromInventory);
 // SET BINDINGS FOR TO INVENTORY
 $bindings["VALUES"] = array(
         $to_facilityID,
         $vaccineID
         );
 
-$toInventory = getData("transfer/check_transfer/getInventory.txt", $bindings);
+$toInventory = getData("transfer/check_transfer/getInventory.txt", $bindings)[0];
+
+print_r($toInventory);
 
 // CHECK IF FROM INVENTORY HAS SUFFICIENT VACCINES
 if($fromInventory['NOVA'] < $totalVaccinesTransferred || $fromInventory['NOVA'] == null){
@@ -48,17 +52,17 @@ if($fromInventory['NOVA'] < $totalVaccinesTransferred || $fromInventory['NOVA'] 
         $bindings["BINDING_TYPES"] = "iii";
         if($toInventory['NOVA'] == null){
                 $bindings["VALUES"] = array(
-                        $vaccineID,
                         $to_facilityID,
+                        $vaccineID,
                         $totalVaccinesTransferred
                         );
-                $result = insertData("transfer/add/addInventory.txt");
+                $result = insertData("transfer/add/addInventory.txt", $bindings);
         }else{
                 $vaccineTotal = $toInventory['NOVA'] + $totalVaccinesTransferred;
                 $bindings["VALUES"] = array(
                         $vaccineTotal,
-                        $to_facilityID,
-                        $vaccineID
+                        $vaccineID,
+                        $to_facilityID
                 );
                 $result = updateData("transfer/update/updateInventory.txt", $bindings);
         }
@@ -67,8 +71,8 @@ if($fromInventory['NOVA'] < $totalVaccinesTransferred || $fromInventory['NOVA'] 
         $vaccineTotal = $fromInventory['NOVA'] - $totalVaccinesTransferred;
         $bindings["VALUES"] = array(
                 $vaccineTotal,
-                $from_facilityID,
-                $vaccineID
+                $vaccineID,
+                $from_facilityID
                 );
 
         $result = updateData("transfer/update/updateInventory.txt", $bindings);
