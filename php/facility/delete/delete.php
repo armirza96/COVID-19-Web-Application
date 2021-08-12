@@ -3,7 +3,7 @@ require_once("././deleter.php");
 
 $bindings["BINDING_TYPES"] = "i";
 $bindings["VALUES"] = array(
-                                $_POST["PATIENT_ID"]
+                                $_POST["ID"]
                         );
 $result = deleteData("facility/delete/delete.txt", $bindings);
 

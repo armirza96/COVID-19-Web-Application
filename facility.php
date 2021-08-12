@@ -11,6 +11,8 @@ $id = $_GET["ID"] ?? -1;
 require_once("php/getter.php");
 
 $data = getData("php/facility/get/getFacility.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$id]])[0];
+$provinces = getData("php/provinces/get/get.txt");
+$managers = getData("php/healthcareWorker/get/getHealthcareWorkerEmploymentRecords.txt");
 
 ?>
 <br />
@@ -27,13 +29,13 @@ $data = getData("php/facility/get/getFacility.txt", ["BINDING_TYPES" => "i", "VA
 <div class="form-row">
     <div class="form-group col-md-6">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Facility Name" name="NAME" value="<?=$data["NAME"]?>">
+      <input type="text" class="form-control" id="name" placeholder="Facility Name" name="NAME" value="<?=$data["name"]?>">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputState">Manager's Employment Record</label>
-        <select id="inputState" class="form-control" name="MANAGERS_EMPLOYEE_RECORD_ID" value="<?=$data["MANAGERS_EMPLOYEE_RECORD_ID"]?>">
+      <label for="inputState">Manager</label>
+        <select id="inputState" class="form-control" name="MANAGERS_EMPLOYEE_RECORD_ID" value="<?=$data["managerEmployeeRecordID"]?>">
           <?php foreach($managers as $r): ?>
-            <option value="<?=$r["ID"]?>"><?=$r["NAME"]?></option>
+            <option value="<?=$r["ID"]?>"><?=$r["firstName"]?></option>
           <?php endforeach; ?>
         </select>
     </div>
@@ -41,30 +43,34 @@ $data = getData("php/facility/get/getFacility.txt", ["BINDING_TYPES" => "i", "VA
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="type">Type</label>
-      <input type="text" class="form-control" id="type" placeholder="type" name="TYPE" value="<?=$data["TYPE"]?>">
+      <select id="inputState" class="form-control" name="TYPE" value="<?=$data["type"]?>">
+          <option value="Clinic">Clinic</option>
+          <option value="Hospital">Hospital</option>
+          <option value="Special installment">Special installment</option>
+        </select>
     </div>
     <div class="form-group col-md-4">
       <label for="webAddress">Web Address</label>
-      <input type="text" class="form-control" id="webAddress" placeholder="place.com" name="WEB_ADDRESS" value="<?=$data["WEB_ADDRESS"]?>">
+      <input type="text" class="form-control" id="webAddress" placeholder="place.com" name="WEB_ADDRESS" value="<?=$data["webAddress"]?>">
     </div>
     <div class="form-group col-md-4">
       <label for="Telephone">Telephone</label>
-      <input type="telephone" class="form-control" id="Telephone" placeholder="123 123 1233" name="PHONE" value="<?=$data["PHONE"]?>">
+      <input type="telephone" class="form-control" id="Telephone" placeholder="123 123 1233" name="PHONE" value="<?=$data["telephone"]?>">
     </div>
   </div>
   <div class="form-group">
     <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="ADDRESS" value="<?=$data["ADDRESS"]?>">
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="ADDRESS" value="<?=$data["address"]?>">
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity" name="CITY" value="<?=$data["CITY"]?>">
+      <input type="text" class="form-control" id="inputCity" name="CITY" value="<?=$data["city"]?>">
     </div>
     <div class="form-group col-md-4">
       <label for="inputState">Province</label>
-      <select id="inputState" class="form-control" name="PROVINCE" value="<?=$data["PROVINCE"]?>">
+      <select id="inputState" class="form-control" name="PROVINCE" value="<?=$data["provinceID"]?>">
 
         <?php foreach($provinces as $pr): ?>
           <option value="<?=$pr["ID"]?>"><?=$pr["NAME"]?></option>
@@ -73,7 +79,7 @@ $data = getData("php/facility/get/getFacility.txt", ["BINDING_TYPES" => "i", "VA
     </div>
     <div class="form-group col-md-2">
       <label for="inputZip">Postal Code</label>
-      <input type="text" class="form-control" id="inputZip" name="POSTAL_CODE" value="<?=$data["POSTAL_CODE"]?>">
+      <input type="text" class="form-control" id="inputZip" name="POSTAL_CODE" value="<?=$data["postal_code"]?>">
     </div>
   </div>
 </form>
@@ -149,7 +155,7 @@ $data = getData("php/facility/get/getFacility.txt", ["BINDING_TYPES" => "i", "VA
         $(".alert-success").show();
         setTimeout(function(){
           //$("#processModal").modal("toggle");
-          window.location.href = `facility.php`;
+          window.location.href = `facilities.php`;
         }, 3000);
 
       } else {
