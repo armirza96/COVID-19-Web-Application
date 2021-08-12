@@ -155,7 +155,7 @@ $managers = getData("php/healthcareWorker/get/getHealthcareWorkerEmploymentRecor
         $(".alert-success").show();
         setTimeout(function(){
           //$("#processModal").modal("toggle");
-          window.location.href = `facility.php`;
+          window.location.href = `facilities.php`;
         }, 3000);
 
       } else {

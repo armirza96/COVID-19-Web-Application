@@ -5,6 +5,7 @@ SELECT
   telephone,
   address,
   city,
+  provinceID,
   postal_code,
   webAddress,
   type
