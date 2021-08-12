@@ -89,7 +89,7 @@ $facilities = getData("php/facility/get/getFacilities.txt");
 <?php
   require "shared/sidebar_end.php";
 
-  $jsToAddAfter[] = '<script src="js/patient/shipmentAdd.js"></script>';
+  $jsToAddAfter[] = '<script src="js/shipment/shipmentAdd.js"></script>';
 
   require 'shared/footer.php';
 ?>
