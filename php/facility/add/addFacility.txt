@@ -1,5 +1,5 @@
 INSERT INTO Facility
-  (managerEmployeeRecordID,
+  (
   name,
   telephone,
   address,
@@ -9,4 +9,4 @@ INSERT INTO Facility
   webAddress,
   type)
 VALUES
-  (?, ?, ?, ?, ?, ?, ?, ?, ?);
+  ( ?, ?, ?, ?, ?, ?, ?, ?);

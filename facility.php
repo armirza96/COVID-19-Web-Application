@@ -12,14 +12,14 @@ require_once("php/getter.php");
 
 $data = getData("php/facility/get/getFacility.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$id]])[0];
 $provinces = getData("php/provinces/get/get.txt");
-$managers = getData("php/healthcareWorker/get/getHealthcareWorkerEmploymentRecords.txt");
+$managers = getData("php/healthcareWorker/get/getHealthcareWorkerEmploymentRecords.txt", ["BINDING_TYPES" => "i", "VALUES"=>[$id]]);
 
 ?>
 <br />
 <div style="display: flex; justify-content: space-between;">
 
   <h2 >
-  Edit Facility: <?="{$data['ID']}";?>
+  Edit Facility: <?="{$data['name']}";?>
   </h2>
   <button onclick="deleteFacility(<?=$id?>)" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Facility</button>
 

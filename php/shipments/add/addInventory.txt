@@ -1,1 +1,1 @@
-INSERT INTO Inventory values (?, ?, ?);
+INSERT INTO Inventory (vaccineID, facilityID, numberOfVaccinesAvailable) values (?, ?, ?);

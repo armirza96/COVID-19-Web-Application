@@ -1,11 +1,11 @@
 <?php
 require_once("././inserter.php");
-
+require_once("././updater.php");
 $bindings = [];
 
-$bindings["BINDING_TYPES"] = "isssssiss";
+$bindings["BINDING_TYPES"] = "sssssiss";
 $bindings["VALUES"] = array(
-                                $_POST["MANAGERS_EMPLOYEE_RECORD_ID"],
+
                                 $_POST["NAME"],
                                 $_POST["PHONE"],
                                 $_POST["ADDRESS"],
@@ -19,6 +19,26 @@ $bindings["VALUES"] = array(
 $result = insertData("facility/add/addFacility.txt", $bindings);
 
 $facilityID = $result["LAST_INSERTED_ID"];
+
+$bindings["BINDING_TYPES"] = "ii";
+$bindings["VALUES"] = array(
+                                $_POST["EMPLOYEE_ID"],
+                                $facilityID
+                        );
+
+$result = insertData("facility/add/addEmploymentRecord.txt", $bindings);
+
+$employeeRecordID = $result["LAST_INSERTED_ID"];
+
+$bindings["BINDING_TYPES"] = "ii";
+$bindings["VALUES"] = array(
+                                $employeeRecordID,
+                                $facilityID
+                        );
+
+$result = insertData("facility/add/updateFacility.txt", $bindings);
+
+$employeeRecordID = $result["LAST_INSERTED_ID"];
 
 $data = [];
 

@@ -56,9 +56,13 @@
   </thead>
   <tbody id="tableBody">
     <?php foreach($data as $d): ?>
+      <tr>
+
+
       <?php foreach($columnNames as $col): ?>
         <th scope="col"><?=$d[$col] ?></th>
       <?php endforeach; ?>
+      </tr>
     <?php endforeach; ?>
 
   </tbody>

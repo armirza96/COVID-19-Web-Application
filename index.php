@@ -25,7 +25,7 @@
 <div class="card border-secondary mb-3" style="max-width: 18rem;">
   <div class="card-header">Report 2</div>
   <div class="card-body text-secondary">
-    <h5 class="card-title">Question 12</h5>
+    <h5 class="card-title">Question 13</h5>
     <p class="card-text">Get details of all the people who live in the city of Montréal and who got
       vaccinated at least two doses of different types of vaccines. (First-name, lastname, date of birth, email, phone, city, date of vaccination, vaccination type, been
       infected by COVID-19 before or not).</p>

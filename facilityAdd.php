@@ -7,7 +7,7 @@ require "shared/sidebar_begin.php";
 
 require_once("php/getter.php");
 $provinces = getData("php/provinces/get/get.txt");
-$managers = getData("php/healthcareWorker/get/getHealthcareWorkerEmploymentRecords.txt");
+$managers = getData("php\healthcareWorker\get\getHealthcareWorkers.txt");
 
 ?>
 <br />
@@ -26,9 +26,9 @@ $managers = getData("php/healthcareWorker/get/getHealthcareWorkerEmploymentRecor
     </div>
     <div class="form-group col-md-6">
       <label for="inputState">Manager</label>
-        <select id="inputState" class="form-control" name="MANAGERS_EMPLOYEE_RECORD_ID">
+        <select id="inputState" class="form-control" name="EMPLOYEE_ID">
           <?php foreach($managers as $r): ?>
-            <option value="<?=$r["ID"]?>"><?=$r["firstName"]?></option>
+            <option value="<?=$r["ID"]?>"><?=$r["FIRST_NAME"]?></option>
           <?php endforeach; ?>
         </select>
     </div>

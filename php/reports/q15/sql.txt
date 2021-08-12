@@ -6,8 +6,7 @@ FROM
   Province P
   INNER JOIN Facility F ON F.provinceID = P.ID
   INNER JOIN Inventory I ON I.facilityID = F.ID
-  INNER JOIN Shipment S ON S.ID = I.shipmentID
-  INNER JOIN Vaccine V on V.ID = S.vaccineID
+  INNER JOIN Vaccine V on V.ID = I.vaccineID
 GROUP BY P.Name, V.Name
 ORDER BY
 	PROVINCE_NAME ASC, TOTAL_NUMBER_VACCINES_AVAILABLE DESC

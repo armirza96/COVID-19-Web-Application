@@ -176,7 +176,7 @@ $facilities = getData("php/facility/get/getFacilities.txt");
               <label for="variant">Facility</label>
               <select id="inputVariant" class="form-control" name="FACILITY_ID">
                 <?php foreach($facilities as $f): ?>
-                  <option value="<?=$f["ID"]?>"><?=$f["NAME"]?></option>
+                  <option value="<?=$f["ID"]?>"><?=$f["name"]?></option>
                 <?php endforeach; ?>
               </select>
             </div>

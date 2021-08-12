@@ -6,16 +6,16 @@ SELECT
   telephone as PHONE,
   CITY,
   CONCAT(VCN.dateGiven,' AND ', VCN2.dateGiven) as DATE_GIVEN,
-  CONCAT(VCNE.type,' AND ', VCNE2.type) as VACCINE_TYPE,
+  CONCAT(VCNE.name,' AND ', VCNE2.name) as VACCINE_TYPE,
   (CASE WHEN EXISTS
     (SELECT 1 FROM PatientInfection PI WHERE PI.patientID = P.ID)
     THEN 'YES' ELSE 'NO'
   END) as PREVIOUSLY_INFECTED
 FROM Patient P
-	INNER JOIN Vaccination VCN ON VCN.patientID = P.ID
+	  INNER JOIN Vaccination VCN ON VCN.patientID = P.ID
     INNER JOIN Vaccination VCN2 ON VCN2.patientID = P.ID
     INNER JOIN Vaccine VCNE ON VCNE.ID = VCN.vaccineID
-    INNER JOIN Vaccine VCNE2 ON VCNE2.ID = VCN.vaccineID
+    INNER JOIN Vaccine VCNE2 ON VCNE2.ID = VCN2.vaccineID
 WHERE
     CITY = 'Montreal' AND
     VCN.vaccineID <> VCN2.vaccineID
@@ -26,6 +26,5 @@ GROUP BY
   EMAIL,
   PHONE,
   CITY,
-  DATE_GIVEN,
-  VACCINE_TYPE
+  DATE_GIVEN
 HAVING COUNT(VCN.dateGiven) = 2

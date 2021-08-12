@@ -10,7 +10,7 @@ require_once("php/getter.php");
 $patients = getData("php/patients/get/getPatients.txt");
 $vaccines = getData("php/vaccines/get/get.txt");
 $facilities = getData("php/facility/get/getFacilities.txt");
-$healthcareWorker = getData("php/healthcareWorker/get/getHealthcareWorkerEmploymentRecords.txt");
+//$healthcareWorker = getData("php/healthcareWorker/get/getHealthcareWorkersEmploymentRecords.txt");
 
 ?>
 <br />
@@ -30,7 +30,7 @@ $healthcareWorker = getData("php/healthcareWorker/get/getHealthcareWorkerEmploym
 
         <select id="patientID" class="form-control" name="PATIENT_ID">
           <?php foreach($patients as $p): ?>
-            <option value="<?=$p["ID"]?>"><?=$p["medicareNumber"]?></option>
+            <option value="<?=$p["ID"]?>"><?="{$p['FIRST_NAME']} {$p['LAST_NAME']}";?></option>
           <?php endforeach; ?>
         </select>
 
@@ -52,7 +52,7 @@ $healthcareWorker = getData("php/healthcareWorker/get/getHealthcareWorkerEmploym
 
         <select id="facilityID" class="form-control" name="FACILITY_ID">
           <?php foreach($facilities as $f): ?>
-            <option value="<?=$f["ID"]?>"><?=$f["NAME"]?></option>
+            <option value="<?=$f["ID"]?>"><?=$f["name"]?></option>
           <?php endforeach; ?>
         </select>
 
@@ -61,14 +61,20 @@ $healthcareWorker = getData("php/healthcareWorker/get/getHealthcareWorkerEmploym
 	<div class="form-group col-md-4">
       <label for="employeeRecordID">Employee Record ID</label>
 
-        <select id="employeeRecordID" class="form-control" name="EMPLOYEERECORD_ID">
+        <select id="employeeRecordID" class="form-control" name="EMPLOYEE_RECORD_ID">
           <?php foreach($healthcareWorker as $h): ?>
-            <option value="<?=$h["ER.ID"]?>"><?=$h["E.firstName"]?></option>
+            <option value="<?=$h["ID"]?>"><?="{$h['firstName']} {$h['lastName']}";?></option>
           <?php endforeach; ?>
         </select>
 
     </div>
 
+    <div class="form-group col-md-4">
+        <label for="dateGiven">Date Given</label>
+        <input type="date" class="form-control" id="dateGiven" placeholder="end date" name="DATE_GIVEN">
+
+
+      </div>
   </div>
 
 </form>

@@ -1,0 +1,4 @@
+INSERT INTO Vaccination
+(patientID, facilityID, vaccineID, employeeRecordID, dateGiven)
+VALUES
+  (?, ?, ?, ?, ?);

@@ -41,6 +41,9 @@ switch($pageToHit) {
   case "employmentRecord/delete":
     require_once("healthcareWorker/update/employmentRecords/delete/delete.php");
   break;
+  case "employmentRecord/get":
+    require_once("healthcareWorker/get/getRecordHealthCareWorkers.php");
+  break;
   /////////////////////////////////////////////////////////////////////////// variants
   case "variants/get":
     require_once("variants/get/get.php");
@@ -72,6 +75,9 @@ switch($pageToHit) {
   break;
   case "vaccines/status/update":
     require_once("vaccines/update/status/update/update.php");
+  break;
+  case "vaccines/perform":
+    require_once("vaccines/perform/add.php");
   break;
   ///////////////////////////////////////////////////////////////////////////// Provinces
    case "provinces/get":

@@ -1,0 +1,4 @@
+UPDATE Inventory
+SET
+  numberOfVaccinesAvailable = numberOfVaccinesAvailable - 1
+WHERE facilityID = ? AND vaccineID = ?
