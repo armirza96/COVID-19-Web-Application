@@ -15,6 +15,9 @@
         <a href="healthcareWorkers.php" class="height_100 padding_0" aria-selected="true">Healthcare</a>
       </li>
       <li class="height_100 w-100">
+        <a href="facilities.php" class="height_100 padding_0" aria-selected="true">Facilities</a>
+      </li>
+      <li class="height_100 w-100">
         <a href="provinces.php" class="height_100 padding_0" aria-selected="true">Provinces</a>
       </li>
       <li class="height_100 w-100">
