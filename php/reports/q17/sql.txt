@@ -4,8 +4,7 @@ SELECT
 FROM
   Province P
   INNER JOIN Facility F ON F.provinceID = P.ID
-  INNER JOIN Inventory I ON I.facilityID = F.ID
-  INNER JOIN Shipment S ON S.ID = I.shipmentID
+  INNER JOIN Shipment S ON S.facilityID = F.ID
 WHERE
   provinceID = 1 AND
   dateOfReception BETWEEN '2021-01-01' AND '2021-07-22'

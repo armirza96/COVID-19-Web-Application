@@ -13,14 +13,14 @@ SELECT
 	E.postal_code POSTAL_CODE,
 	E.citizenship CITIZEN,
 	E.EMAIL,
-	CONCAT(F.NAME, ', Employment Record: ', ER.startDate, ' - ', ER.endDate) EMP_RECORD
+	CONCAT(F.NAME, ', Employment Record: ', ER.startDate, ' - ', coalesce(ER.endDate,'')) EMP_RECORD
 FROM
 	Employee E
 	INNER JOIN EmploymentRecord ER ON ER.employeeID = E.ID
-  INNER JOIN Facility F ON F.ID = ER.facilityID
+	INNER JOIN Facility F ON F.ID = ER.facilityID
 	INNER JOIN Province P ON P.ID = E.provinceID
 WHERE
-  F.CITY = 'Montreal'
+  F.ID = 1
 GROUP BY
   	E.ID,
 	E.SSN,
