@@ -10,7 +10,7 @@
     <title>COMP 353 Main Project</title>
     <!-- <author>Abdul Mirza</author>
     <author>Jaime </author>
-    <author>Other dude </author> -->
+    <author>Kevin Nguyen </author> -->
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Scrollbar Custom CSS -->
