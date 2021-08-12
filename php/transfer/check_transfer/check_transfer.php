@@ -20,7 +20,6 @@ $bindings["VALUES"] = array(
                         
 $fromInventory = getData("transfer/check_transfer/getInventory.txt", $bindings)[0];
 
-print_r($fromInventory);
 // SET BINDINGS FOR TO INVENTORY
 $bindings["VALUES"] = array(
         $to_facilityID,
@@ -29,10 +28,8 @@ $bindings["VALUES"] = array(
 
 $toInventory = getData("transfer/check_transfer/getInventory.txt", $bindings)[0];
 
-print_r($toInventory);
-
 // CHECK IF FROM INVENTORY HAS SUFFICIENT VACCINES
-if($fromInventory['NOVA'] < $totalVaccinesTransferred || $fromInventory['NOVA'] == null){
+if($fromInventory == null || $fromInventory['NOVA'] < $totalVaccinesTransferred){
         $result["RESULT"] = 2;
 }else{
 
@@ -50,7 +47,7 @@ if($fromInventory['NOVA'] < $totalVaccinesTransferred || $fromInventory['NOVA'] 
 
         // ADD OR UPDATE TO INVENTORY
         $bindings["BINDING_TYPES"] = "iii";
-        if($toInventory['NOVA'] == null){
+        if($toInventory == null){
                 $bindings["VALUES"] = array(
                         $to_facilityID,
                         $vaccineID,
