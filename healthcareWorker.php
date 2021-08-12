@@ -7,7 +7,7 @@ require "shared/sidebar_begin.php";
 
 
 //get patient info
-$empID = $_GET["empID"] ?? -1;
+$empID = $_GET["EMPLOYEE_ID"] ?? -1;
 
 ?>
 <br />
@@ -16,7 +16,7 @@ $empID = $_GET["empID"] ?? -1;
     <h2 >
     Edit Employee
     </h2>
-    <a href="patient.php?PATIENT_ID=-1" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Employee</a>
+    <a href="healthcareWorker.php?EMPLOYEE_ID=-1" class="btn btn-sm btn-danger" style="height: fit-content;">Delete Employee</a>
   <?php else : ?>
     <h2 >
     Add Employee
@@ -83,7 +83,7 @@ $empID = $_GET["empID"] ?? -1;
 <br />
 
 
-<h3>Patient Infections</h3>
+<h3>Employment Record</h3>
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -107,20 +107,108 @@ $empID = $_GET["empID"] ?? -1;
 
   $jsToAddAfter[] = '<script>
 
-                  //doAjaxCall({}, addPatientsToUI);
-                  ajaxDone([{"VARIANT": "DELTA", "DATEOFINFECTION": "2021-03-04", "DATEOFCURE": "2021-03-18", "ID": 1}], {callback: "addInfectionsToUI", parentEl: "#tableBody"});
+        function editEmployee(patientID) {
+          $(".alert").hide();
+          $("#processModal").modal("toggle");
+          let dataToSend = {PAGE: "updateEmployee"};
+          $("#formPatient :input").each(function(){
+              const name = $(this).attr("name");
+              const value = $(this).val();
+              dataToSend[name] = value;
+          });
+          dataToSend["IS_CITIZEN"] = $("#inputCitizen").val();
+          dataToSend["AGE_GROUP"] = $("#ageGroup").val();
+          dataToSend["PATIENT_ID"] = patientID;
+          console.log(dataToSend);
+          doAjaxCall(dataToSend, {callback: "showEditPatientAlert", parentEl: ".modal-body", type: "UI_UPDATE"}, "POST");
+      }
 
-                  function addInfectionsToUI(parentEl, data) {
-                    parentEl.append(`<tr>
-                        <th scope="row">${data.ID}</th>
-                        <th scope="row">${data.VARIANT}</th>
-                        <td>${data.DATEOFINFECTION}</td>
-                        <td>${data.DATEOFCURE}</td>
-                        <td><a href="patient.php" class="btn btn-sm btn-info">Save</a></td>
-                      </tr>`);
-                  }
+      function showEditEmployeeAlert(parentEl, data) {
+        if(data.RESULT == 1) {
+          $(".alert-success").text(data.MESSAGE+ ". " + "Dismissing in 3 seconds");
+          $(".alert-success").show();
 
-                </script>';
+          setTimeout(function(){
+            $("#processModal").modal("toggle");
+          }, 3000);
+
+        } else {
+          $(".alert-danger").text(data.MESSAGE);
+          $(".alert-danger").show()
+        }
+      }
+
+      function deleteEmployee(patientID) {
+        $(".alert").hide();
+        $("#processModal").modal("toggle");
+        doAjaxCall({PAGE: "deletePatient", "PATIENT_ID": patientID}, {callback: "showDeletedPatientAlert", parentEl: ".modal-body", type: "UI_UPDATE"}, "POST");
+      }
+
+      function showDeletedPatientAlert(parentEl, data) {
+        if(data.RESULT == 1) {
+          $(".alert-success").text(data.MESSAGE+ " Dismissing in 3 seconds");
+          $(".alert-success").show();
+          setTimeout(function(){
+            //$("#processModal").modal("toggle");
+            window.location.href = `patients.php`;
+          }, 3000);
+
+        } else {
+          $(".alert-danger").text(data.MESSAGE);
+          $(".alert-danger").show();
+        }
+      }
+
+      function addInfection(patientID) {
+        //  $("#processModal").modal("toggle");
+          let dataToSend = {PAGE: "addInfection"};
+          $("#formInfection :input").each(function(){
+              const name = $(this).attr("name");
+              const value = $(this).val();
+              dataToSend[name] = value;
+          });
+          dataToSend["PATIENT_ID"] = patientID;
+          console.log(dataToSend);
+          doAjaxCall(dataToSend, {callback: "showAddedInfectionAlert", parentEl: "body", type: "UI_UPDATE"}, "POST");
+      }
+
+      function showAddedInfectionAlert(parentEl, data) {
+        if(data.RESULT == 1) {
+          $(".alert-success").text(data.MESSAGE + ". " + "Redirecting in 3 seconds");
+          $(".alert-success").show();
+          setTimeout(function(){
+            //$("#processModal").modal("toggle");
+            window.location.href = `patient.php?PATIENT_ID=${data.ID}`;
+          }, 3000);
+
+        } else {
+          $(".alert-danger").text(data.MESSAGE);
+          $(".alert-success").show()
+        }
+      }
+
+
+      function deleteInfection(infectionID) {
+        $(".alert").hide();
+        $("#processModal").modal("toggle");
+        doAjaxCall({PAGE: "deleteInfection", "INFECTION_ID": infectionID}, {callback: "showDeletedInfectionAlert", parentEl: ".modal-body", type: "UI_UPDATE"}, "POST");
+      }
+
+      function showDeletedInfectionAlert(parentEl, data) {
+        if(data.RESULT == 1) {
+          $(".alert-success").text(data.MESSAGE+ " Dismissing in 3 seconds");
+          $(".alert-success").show();
+          setTimeout(function(){
+            //$("#processModal").modal("toggle");
+            location.reload();
+          }, 3000);
+
+        } else {
+          $(".alert-danger").text(data.MESSAGE);
+          $(".alert-danger").show();
+        }
+      }
+      /script>';
 
   require 'shared/footer.php';
 ?>

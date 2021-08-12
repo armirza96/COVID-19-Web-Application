@@ -7,7 +7,6 @@ require "shared/sidebar_begin.php";
 
 require_once("php/getter.php");
 $provinces = getData("php/provinces/get/get.txt");
-$ageGroups = getData("php/ageGroups/get/get.txt");
 
 ?>
 <br />
@@ -33,6 +32,10 @@ $ageGroups = getData("php/ageGroups/get/get.txt");
     <div class="form-group col-md-4">
       <label for="medicareNumber">Medicare</label>
       <input type="text" class="form-control" id="medicareNumber" placeholder="medicare #" name="MEDICARE">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="ssn">SSN</label>
+      <input type="text" class="form-control" id="ssn" placeholder="123-123-123" name ="SSN">
     </div>
   </div>
   <div class="form-row">
@@ -74,20 +77,6 @@ $ageGroups = getData("php/ageGroups/get/get.txt");
     </div>
   </div>
 
-  <h3>Age Group</h3>
-    <div class="form-row">
-
-      <div class="form-group col-md-4">
-        <label for="ageGroup">What age group do they belong to?</label>
-        <select id="ageGroup" class="form-control" name="AGE_GROUP">
-          <?php foreach($ageGroups as $group): ?>
-            <option value="<?=$group["ID"]?>"><?="{$group['lowerAgeBound']} - {$group['upperAgeBound']}"; ?></option>
-          <?php endforeach; ?>
-        </select>
-      </div>
-
-    </div>
-
   <h3>Citizenship status</h3>
     <div class="form-row">
       <div class="form-group col-md-4">
@@ -108,13 +97,13 @@ $ageGroups = getData("php/ageGroups/get/get.txt");
 
 
 </form>
-<button class="btn btn-primary float-right" onclick="addPatient();">Add</button>
+<button class="btn btn-primary float-right" onclick="add();">Add</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Patient</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -137,7 +126,7 @@ $ageGroups = getData("php/ageGroups/get/get.txt");
 <?php
   require "shared/sidebar_end.php";
 
-  $jsToAddAfter[] = '<script src="js/patient/patientAdd.js"></script>';;
+  $jsToAddAfter[] = '<script src="js/healthcareWorker/add.js"></script>';;
 
   require 'shared/footer.php';
 ?>

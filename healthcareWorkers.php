@@ -29,15 +29,14 @@
 
   $jsToAddAfter[] = '<script>
 
-                  doAjaxCall({PAGE: "getPatients"}, {callback: "addPatientsToUI", parentEl: "#tableBody", type: "ADD_TO_UI"});
-                //  ajaxDone([{"NAME": "MARK", "LASTNAME": "JOHN", "ID": 1}], {callback: "addPatientsToUI", parentEl: "#tableBody"});
+                  doAjaxCall({PAGE: "healthcareWorker/get"}, {callback: "addDataToUI", parentEl: "#tableBody", type: "ADD_TO_UI"});
 
-                  function addPatientsToUI(parentEl, data) {
+                  function addDataToUI(parentEl, data) {
                     parentEl.append(`<tr>
                         <th scope="row">${data.ID}</th>
-                        <td>${data.FIRST_NAME}</td>
-                        <td>${data.LAST_NAME}</td>
-                        <td ><a href="patient.php?PATIENT_ID=${data.ID}" class="btn btn-sm btn-info">Edit</a></td>
+                        <td>${data.NAME}</td>
+                        <td>${data.CODE}</td>
+                        <td ><a href="healthcareWorker.php?ID=${data.ID}" class="btn btn-sm btn-info">Edit</a></td>
                       </tr>`);
                   }
 

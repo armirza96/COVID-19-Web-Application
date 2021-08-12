@@ -22,6 +22,25 @@ switch($pageToHit) {
   case "deleteInfection":
     require_once("patients/update/infection/delete/delete.php");
   break;
+  /////////////////////////////////////////////////////////////////////////// Employees
+  case "healthcareWorker/get":
+    require_once("healthcareWorker/get/get.php");
+  break;
+  case "healthcareWorker/delete":
+    require_once("helthcareWorker/delete/delete.php");
+  break;
+  case "healthcareWorker/add":
+    require_once("healthcareWorker/add/add.php");
+  break;
+  case "healthcareWorker/update":
+    require_once("healthcareWorker/update/update.php");
+  break;
+  case "employmentRecord/add":
+    require_once("healthcareWorker/update/employmentRecords/add/add.php");
+  break;
+  case "employmentRecord/delete":
+    require_once("healthcaareWorker/update/employmentRecords/delete/delete.php");
+  break;
   /////////////////////////////////////////////////////////////////////////// variants
   case "variants/get":
     require_once("variants/get/get.php");
@@ -35,7 +54,7 @@ switch($pageToHit) {
   case "variants/delete":
     require_once("variants/delete/delete.php");
   break;
- ///////////////////////////////////////////////////////////////////////////// VACCINES
+  ///////////////////////////////////////////////////////////////////////////// VACCINES
   case "vaccines/get":
     require_once("vaccines/get/get.php");
   break;
